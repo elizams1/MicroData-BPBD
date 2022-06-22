@@ -1,0 +1,20 @@
+.menuHeader{
+  height: 100px;
+  background-color: #075098;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 25px;
+}.columnHeader{
+  display: flex;
+  align-items: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-content: space-between;
+}.name{
+  font-size:30px;
+}
+.email, .location{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
