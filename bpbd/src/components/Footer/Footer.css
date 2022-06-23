@@ -1,0 +1,36 @@
+@media screen and (max-width: 1400px) {
+  .title, .title1, .text{
+    font-size: 14px !important;
+  }
+}
+.footer {
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  width: 100%;
+  height: 300;
+  background-color: #075098;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  justify-content: center;
+  gap: 50px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.title{
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+.title1 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0px;
+}
+.text {
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+  margin: 0px 0px 10px;
+}
