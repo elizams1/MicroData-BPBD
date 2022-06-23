@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import './Header.css';
+import './Home.css';
 import { BsEnvelope, BsGeo } from "react-icons/bs";
-import Menu from '../Menu/Menu.js';
 
-function Header() {
-  const [HeaderData, setHeaderData] = useState([]);
+
+function Home() {
+  const [HomeData, setHomeData] = useState([]);
   useEffect(() => {
       axios
         .get("http://adminmesuji.embuncode.com/api/instansi/detail/31")
-        .then(function (header) {
-          setHeaderData(header.data.data);
-          console.log("console header: " + header.data.data);
+        .then(function (home) {
+          setHomeData(home.data.data);
+          console.log("console header: " + home.data.data);
         })
         .catch(function (error) {
           console.log(error);
@@ -19,16 +19,13 @@ function Header() {
     }, []);
 
   return (
-    <div className="header">
-      <div className="menuHeader">
-        <Menu/>
-      </div>
-      <div className="columnHeader">
+    <div className="home">
+      <div className="columnHome">
         <div className="logo">
-          <img className="logoImg" src={HeaderData.logo_instansi} alt="thelogo"></img>
+          <img className="logoImg" src={HomeData.logo_instansi} alt="thelogo"></img>
         </div>
         <div> 
-          <p  className="name">{HeaderData.nama_instansi}</p>
+          <p  className="name">{HomeData.nama_instansi}</p>
         </div>
         <div className="description">
           <div className="email">
@@ -37,7 +34,7 @@ function Header() {
             </div>
             <div>
               <p className="details1">Email</p>
-              <p className="details">{HeaderData.email}</p>
+              <p className="details">{HomeData.email}</p>
             </div>
           </div>
           <div className="location">
@@ -46,7 +43,7 @@ function Header() {
             </div>
             <div>
               <p className="details1">Alamat</p>
-              <p className="details">{HeaderData.alamat}</p>
+              <p className="details">{HomeData.alamat}</p>
             </div>
           </div>
         </div>
@@ -57,4 +54,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Home;

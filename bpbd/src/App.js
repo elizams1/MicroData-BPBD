@@ -1,12 +1,14 @@
 import React from "react";
 import './App.css';
-import Header from './components/Header/Header.js';
+import Menu from './components/Menu/Menu.js';
+import Home from './components/Home/Home.js';
 import Footer from './components/Footer/Footer.js';
 
 function App() {
   return (
     <>
-      <Header/>
+      <Menu/>
+      <Home/>
       <Footer/>
     </>
   );

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './Menu.css';
+import { BsList } from "react-icons/bs";
 
 function Menu(){
   const [MenuData, setMenuData] = useState([]);
@@ -19,7 +20,13 @@ function Menu(){
   return(
     <div className="theMenu">
       {MenuData.map(item => <div className="button" >{item.name}</div> )}
-      
+      <div className="drawer">
+        <div>
+          <p className="nameInstansi">Badan Penanggulangan Bencana Daerah</p>
+          <p className="nameInstansi">Kabupaten Lampung Timur</p>
+        </div>
+        <BsList size={35} color="#fff" className="icon"/>
+      </div>
     </div>
   );
 }
