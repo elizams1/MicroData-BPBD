@@ -7,12 +7,38 @@
   }
   .drawer{
     display: flex !important;
-    width: 100%;
-    justify-content: flex-end;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
   }
   .nameInstansi{
     color:#fff;
     margin: 0px;
+  }
+  .logoMenu{
+    width: 10%;
+  }
+  .theName{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+  }
+  .theDrawer {
+    display: flex !important;
+  }
+  .menuDrawer{
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #075098;
+    text-align: center;
+  }
+  .menuDrawer:Hover{
+    background-color: #075098;
+    opacity: 0.5;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
   }
 }
 .theMenu{
@@ -40,4 +66,20 @@
 }
 .drawer{
   display: none;
+}
+.theDrawer{
+  display: none;
+}
+.menuDrawer {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #075098;
+  text-align: center;
+}
+.menuDrawer:Hover {
+  background-color: #075098;
+  opacity: 0.5;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
 }
