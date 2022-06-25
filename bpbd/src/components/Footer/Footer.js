@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './Footer.css';
 
-function Menu(){
+function Footer(){
   const [FooterData, setFooterData] = useState([]);
   useEffect(() => {
       axios
@@ -36,4 +36,4 @@ function Menu(){
   );
 }
 
-export default Menu;
+export default Footer;

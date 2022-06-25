@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './Home.css';
 import { BsEnvelope, BsGeo } from "react-icons/bs";
-import { Carousel } from 'react-bootstrap';
+import Carousel from '../Carousel/Carousel.js';
+import CategoryNews from '../CategoryNews/CategoryNews.js';
+import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 
 
 function Home() {
@@ -20,49 +22,48 @@ function Home() {
         });
     }, []);
 
-  //Mencari data berita menggunakan id instansi
-  const [CarouselData, setCarouselData] = useState([]);
+  //Mengambil berita terbaru menggunakan id instansi
+  const [NewsData, setNewsData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=2")
-        .then(function (carousel) {
-          var temp =[]
-          for (let i = 0; i < 3; i += 1) {
-              if (i < carousel.data.data.data.length) {
-                  temp.push(carousel.data.data.data[i])
-              }
+        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc&per_page=3")
+        .then(function (news) {
+          setNewsData(news.data.data.data);
+          console.log("console header: " + news.data.data.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, []);
+  
+  //Mengambil berita terbaru menggunakan id instansi
+  const [ArticleData, setArticleData] = useState([]);
+  useEffect(() => {
+      axios
+        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=4&per_page=3&sort_type=asc&sort_by=created_at")
+        .then(function (article) {
+          setArticleData(article.data.data.data);
+          console.log("console header: " + article.data.data.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, []);
 
+  //Mengambil foto terbaru menggunakan id instansi id
+  const [PhotoData, setPhotoData] = useState([]);
+  useEffect(() => {
+      axios
+        .get("http://adminmesuji.embuncode.com/api/image-gallery?instansi_id=15&per_page=3")
+        .then(function (photo) {
+          let theImage = [];
+          for (let i = 0; i < photo.data.data.data.length; i++) {
+            for (let j = 0; j < photo.data.data.data[i].image_gallery_item.length; j++) {
+              theImage.push(photo.data.data.data[i].image_gallery_item[j].image_file_data)
+            }
           }
-          setCarouselData(temp);
-          console.log("console header: " + carousel.data.data.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }, []);
-  
-  // Mencari kategori berita menggunakan id instansi
-  const [CategoryNewsData, setCategoryNewsData] = useState([]);
-  useEffect(() => {
-      axios
-        .get("http://adminmesuji.embuncode.com/api/news/categories/3")
-        .then(function (catNews) {
-          setCategoryNewsData(catNews.data.data);
-          console.log("console header: " + catNews.data.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }, []);
-  
-  //Mencari kategori artikel menggunakan id instansi
-  const [CategoryArticleData, setCategoryArticleData] = useState([]);
-  useEffect(() => {
-      axios
-        .get("http://adminmesuji.embuncode.com/api/article/categories/3")
-        .then(function (catArticle) {
-          setCategoryArticleData(catArticle.data.data);
-          console.log("console header: " + catArticle.data.data);
+          setPhotoData(theImage);
+          console.log("console header: " + photo.data.data.data);
         })
         .catch(function (error) {
           console.log(error);
@@ -100,20 +101,7 @@ function Home() {
         </div>
       </div>
       <div className="carousel">
-        <Carousel>
-            {CarouselData.map(item => 
-                <Carousel.Item className='theCarousel'>
-                  <img
-                    className="d-block w-100 theCarousel"
-                    src={item.image_file_data}
-                    alt="First slide"
-                  />
-                  <Carousel.Caption>
-                    <p className="carouselTittle">{item.title}</p>
-                  </Carousel.Caption>
-                </Carousel.Item>
-            )}
-        </Carousel>
+        <Carousel />
       </div>
       <div className="theInstansi">
         <div>
@@ -128,31 +116,32 @@ function Home() {
       </div>
       <div className="splitView">
         <div className="leftView">
-          <div className="picture">
+          <div className="gallery">
             <p className="subMenuName">Galeri</p>
             <div className='theGallery'>
-            {CarouselData.map(item => 
-              
+            {PhotoData.map(item => 
                 <img
                   className="thePicture"
-                  src={item.image_file_data}
+                  src={item}
                   alt="First slide"
                 />
-              
             )}
             </div>
           </div>
           <div className="news">
             <p className="subMenuName">Berita</p>
             <div className='theNews'>
-              {CarouselData.map(item => 
+              {NewsData.map(item => 
                 <div className="detailNews">
                   <img
                     className="thePicture"
                     src={item.image_file_data}
                     alt="First slide"
                   />
-                  <p className="textDetails">{item.title}</p>
+                  <div>
+                    <p className="textDetails">{item.title}</p>
+                    <p className="textIntro">{item.intro}</p>
+                  </div>
                 </div>                
               )}
             </div>
@@ -160,9 +149,13 @@ function Home() {
           <div className="article">
             <p className="subMenuName">Artikel</p>
             <div className='theNews'>
-              {CarouselData.map(item => 
+              {ArticleData.map(item => 
                 <div className="detailNews">
-                  <p className="textDetails">{item.title}</p>
+                  <div>
+                    <p className="textDetails2">{item.title}</p>
+                    <p className="textIntro2">{item.intro}</p>
+                  </div>
+                  
                   <img
                     className="thePicture"
                     src={item.image_file_data}
@@ -175,16 +168,10 @@ function Home() {
         </div>
         <div className="rightView">
           <div className="categoryNews">
-            <p className="subMenuName">Kategori Berita</p>
-            {CategoryNewsData.map(item => 
-              <p className="textCategory ">{item.nama_kategori}</p>                
-            )}
-        </div>
+            <CategoryNews/>
+          </div>
           <div className="categoryArticle">
-            <p className="subMenuName">Kategori Artikel</p>
-            {CategoryArticleData.map(item => 
-              <p className="textCategory ">{item.nama_kategori}</p>                
-            )}
+            <CategoryArticle/>
           </div>
         </div>
       </div>

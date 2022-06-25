@@ -1,0 +1,8 @@
+.theCarousel {
+  border-radius: 10px;
+  height: 400px;
+}
+.carouselTittle {
+  font-weight: 600 !important;
+  font-size: 18px;
+}
