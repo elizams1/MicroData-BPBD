@@ -2,34 +2,35 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
-import './ListBerita.css';
+import './ListArticle.css';
 
-function ListBerita(){
-  //http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc
+function ListArticle() {
+  //http://adminmesuji.embuncode.com/api/article?instansi_id=4&sort_type=asc&sort_by=created_at
 
-  const [NewsData, setNewsData] = useState([]);
+  const [ArticleData, setArticleData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc")
-        .then(function (news) {
-          setNewsData(news.data.data.data);
-          console.log("console header: " + news.data.data.data);
+        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=4&sort_type=asc&sort_by=created_at")
+        .then(function (article) {
+          setArticleData(article.data.data.data);
+          console.log("console header: " + article.data.data.data);
         })
         .catch(function (error) {
           console.log(error);
         });
     }, []);
 
-  return(
+  return (
     <div>
       <div>
-        <p className="newsTitle">BERITA</p>
+        <p className="articleTitle">ARTIKEL</p>
       </div>
-      <div className="listNews">
+      <div className="listArticle">
+        
         <div className="splitView">
           <div className="leftView">
             <div className='theNews'>
-              {NewsData.map(item => 
+              {ArticleData.map(item => 
                 <div className="detailNews">
                   <img
                     className="thePicture"
@@ -55,6 +56,8 @@ function ListBerita(){
         </div>
       </div>
     </div>
+    
   );
 }
-export default ListBerita;
+
+export default ListArticle;
