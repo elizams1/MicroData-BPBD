@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
-import './ListBerita.css';
+import './ListNews.css';
 
-function ListBerita(){
+function ListNews(){
   //http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc
 
   const [NewsData, setNewsData] = useState([]);
@@ -28,7 +28,7 @@ function ListBerita(){
       <div className="listNews">
         <div className="splitView">
           <div className="leftView">
-            <div className='theNews'>
+            <div className='the-news'>
               {NewsData.map(item => 
                 <div className="detailNews">
                   <img
@@ -57,4 +57,4 @@ function ListBerita(){
     </div>
   );
 }
-export default ListBerita;
+export default ListNews;

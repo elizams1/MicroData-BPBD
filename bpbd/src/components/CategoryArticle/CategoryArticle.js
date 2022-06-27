@@ -20,7 +20,10 @@ function CategoryArticle() {
     <>
       <p className="subMenuName">Kategori Artikel</p>
         {CategoryArticleData.map(item => 
-          <p className="textCategory ">{item.nama_kategori}</p>                
+          <>
+            <p className="textCategory ">{item.nama_kategori}</p>
+            <hr></hr>   
+          </>            
         )}
     </>
   );

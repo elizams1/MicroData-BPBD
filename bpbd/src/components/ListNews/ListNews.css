@@ -6,16 +6,18 @@
   .leftView{
     margin-bottom: 25px; 
   }
-  .rightView{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-  }
   .theNews{
     width: 100% !important;
   }
   .thePicture{
     height: 250px!important;;
+  }
+  .rightView {
+    display: flex;
+    width: 100% !important;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 20px;
   }
 }
 .newsTitle {
@@ -30,23 +32,24 @@
 }
 .leftView{
   align-items: center;
-  display: flex;
-  justify-content: center;
+  width: 75%;
 }
-.theNews{
-  width: 70%;
+.the-news{
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .detailNews{
   flex-direction: column;
-  margin-bottom: 20px;
-  
+  margin-bottom: 20px;  
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  border-radius: 10px;
 }
 .thePicture{
   height: 350px;
   width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 .detail{
   width: 100%;

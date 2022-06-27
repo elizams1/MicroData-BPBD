@@ -9,10 +9,15 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 
-function Menu(){
+function TheMenu(){
   // Mengambil data menu berdasarkan id instansi
   const [MenuData, setMenuData] = useState([]);
   useEffect(() => {
@@ -47,37 +52,104 @@ function Menu(){
   
 
   return(
-    <div className="theMenu">
-      {MenuData.map(item => <div className="button" >{item.name}</div> )}
-      <div className="drawer">
-        <div className="theName">
-          <img className="logoMenu" src={LogoData.logo_instansi} alt="thelogo" ></img>
-          <p className="nameInstansi">{LogoData.nama_instansi}</p>
+    <>
+      <div className="theMenu">
+        <div className="the-list-menu">
+          {MenuData.map(item=>
+          <Menu>
+            {({isOpen})=>(
+              <>
+                <MenuButton 
+                  px={2}
+                  py={2}
+                  transition='all 0.2s'
+                  color='white'
+                  fontSize="20px"
+                  _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
+                  _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}
+                  // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
+                isActive={isOpen}
+                > 
+                  {isOpen ? item.name : item.name}
+                </MenuButton>
+                { item.children.length > 0 ? 
+                  <MenuList>
+                    {item.children.map(child =>
+                      <MenuItem 
+                         _hover={{ bg: 'aliceblue', color:'#075098' }}
+                      >{child.name}</MenuItem>
+                    )}
+                  </MenuList> : null
+                }
+              </>
+            )}
+          </Menu>        
+        )}
         </div>
-        <div className="theDrawer">
-          <div className="buttonDrawer" onClick={onOpen}>
-            <BsList size={35} color="#fff" className="icon"/>
+        <div className="drawer">
+          <div className="theName">
+            <img className="logoMenu" src={LogoData.logo_instansi} alt="thelogo" ></img>
+            <p className="nameInstansi">{LogoData.nama_instansi}</p>
           </div>
-          <Drawer
-            isOpen={isOpen}
-            placement='right'
-            onClose={onClose}
-            finalFocusRef={btnRef}
-          >
-            <DrawerOverlay />
-            <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader borderBottomWidth='1px' color= "#075098">Menu</DrawerHeader>              
-              <DrawerBody>
-                {MenuData.map(item => <div className="menuDrawer" >{item.name}</div> )}
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
+          <div className="theDrawer">
+            <div className="buttonDrawer" onClick={onOpen}>
+              <BsList size={35} color="#fff" className="icon"/>
+            </div>
+            <Drawer
+              isOpen={isOpen}
+              placement='right'
+              onClose={onClose}
+              finalFocusRef={btnRef}
+            >
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton />
+                <DrawerHeader borderBottomWidth='1px' color= "#075098">Menu</DrawerHeader>              
+                <DrawerBody>
+                  {MenuData.map(item=>
+                    <Menu>
+                      {({isOpen})=>(
+                        <>
+                          <MenuButton 
+                            px={2}
+                            py={2}
+                            transition='all 0.2s'
+                            display='flex'
+                            marginBottom="10px"
+                            color='#075098'
+                            fontSize="20px"
+                            width= '100%'
+                            textAlign="center"
+                            _hover={{ bg: '#075098', borderRadius:'10px', color:'white' }}
+                            _expanded={{boxShadow: 'outline', borderRadius:'10px' }}
+                            // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
+                          isActive={isOpen}
+                          > 
+                            {isOpen ? item.name : item.name}
+                          </MenuButton>
+                          { item.children.length > 0 ? 
+                            <MenuList  
+                             >
+                              {item.children.map(child =>
+                                <MenuItem 
+                                  color='#075098'
+                                >{child.name}</MenuItem>
+                              )}
+                            </MenuList> : null
+                          }
+                        </>
+                      )}
+                    </Menu>        
+                  )}
+                </DrawerBody>
+              </DrawerContent>
+            </Drawer>
+          </div>
+          
         </div>
-        
       </div>
-    </div>
+    </>
   );
 }
 
-export default Menu;
+export default TheMenu;

@@ -20,7 +20,11 @@ function CategoryNews() {
     <>
       <p className="subMenuName">Kategori Berita</p>
       {CategoryNewsData.map(item => 
-        <p className="textCategory ">{item.nama_kategori}</p>                
+        <>
+           <p className="textCategory ">{item.nama_kategori}</p>
+           <hr></hr>
+        </>
+                       
       )}
     </>
   );

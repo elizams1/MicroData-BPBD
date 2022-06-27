@@ -2,6 +2,9 @@
   .button{
     font-size: 16px !important;
   }
+  .the-list-menu{
+    display: none !important;
+  }
   .button{
     display: none !important; ;
   }
@@ -53,7 +56,13 @@
   border-bottom-right-radius: 20px;
   margin-bottom: 25px;
 }
-.button{
+.the-list-menu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+/* .button{
   color: #fff;
   padding: 5px;
   text-transform: uppercase;
@@ -63,7 +72,7 @@
   color: #075098;
   background-color: #fff;
   border-radius: 10px;
-}
+} */
 .drawer{
   display: none;
 }

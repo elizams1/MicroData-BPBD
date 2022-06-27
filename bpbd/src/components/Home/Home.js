@@ -115,13 +115,13 @@ function Home() {
         </div>
       </div>
       <div className="splitView">
-        <div className="leftView">
+        <div className="left-view">
           <div className="gallery">
             <p className="subMenuName">Galeri</p>
             <div className='theGallery'>
             {PhotoData.map(item => 
                 <img
-                  className="thePicture"
+                  className="the-picture"
                   src={item}
                   alt="First slide"
                 />
@@ -132,11 +132,11 @@ function Home() {
             <p className="subMenuName">Berita</p>
             <div className='theNews'>
               {NewsData.map(item => 
-                <div className="detailNews">
+                <div className="the-detail-news">
                   <img
-                    className="thePicture"
+                    className="the-picture"
                     src={item.image_file_data}
-                    alt="First slide"
+                    alt="the-detail-news-photo"
                   />
                   <div>
                     <p className="textDetails">{item.title}</p>
@@ -148,25 +148,25 @@ function Home() {
           </div>
           <div className="article">
             <p className="subMenuName">Artikel</p>
-            <div className='theNews'>
+            <div className='theArticle'>
               {ArticleData.map(item => 
-                <div className="detailNews">
+                <div className="the-detail-article">
                   <div>
                     <p className="textDetails2">{item.title}</p>
                     <p className="textIntro2">{item.intro}</p>
                   </div>
                   
                   <img
-                    className="thePicture"
+                    className="the-picture"
                     src={item.image_file_data}
-                    alt="First slide"
+                    alt="the-detail-article-photo"
                   />
                 </div>                
               )}
             </div>
           </div>
         </div>
-        <div className="rightView">
+        <div className="right-view">
           <div className="categoryNews">
             <CategoryNews/>
           </div>
