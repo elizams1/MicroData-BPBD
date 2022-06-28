@@ -26,9 +26,6 @@
   .details,.details1, .textDetails,.textDetails2,.nameButton{
     font-size: 16px!important;
   }
-  .textCategory{
-    font-size: 14px !important;
-  }
   .nameTitle{
     font-size: 20px !important;
     margin-bottom: 5px !important;
@@ -204,13 +201,4 @@
 .categoryNews, .categoryArticle{
   border-radius: 10px;
   margin-bottom: 25px;
-}
-.textCategory{
-  padding: 5px 10px;
-  text-align: center;
-  margin-top: 5px;
-}
-.textCategory:hover,.the-detail-news:hover{
-  background-color: aliceblue;
-  border-radius: 10px;
 }

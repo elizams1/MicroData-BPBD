@@ -1,5 +1,77 @@
+@media screen and (max-width: 1400px){
+  .split-view-profil{
+    flex-direction: column!important;
+  }
+  .left-view-profil{
+    width: 100% !important;
+  }
+  .profil-title{
+    font-size: 26px !important;
+  }
+  .profil-name{
+    font-size: 20px !important;
+  }
+  .profil-about, .structure-name{
+    font-size: 16px !important
+  }
+  
+}
 .profil-instansi{
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
+}
+.split-view-profil{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 25px;
+  gap: 20px;
+  align-items: flex-start;
+}
+.left-view-profil{
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  flex-direction: column;
+}
+.profil-title{
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.profil-top{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.profil-name{
+  font-size: 26px;
+  font-weight: 600;
+}
+.profil-about{
+  font-size: 20px;
+  text-align: justify;
+}
+.profil-structure{
+  margin-top: 50px;
+}
+.the-structure{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.photo-structure{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.photo-profil{
+  width: 90%;
+  border-radius: 10px;
+}
+.structure-name{
+  font-size: 20px;
+  font-weight: 500;
 }

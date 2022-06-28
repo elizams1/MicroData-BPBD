@@ -1,0 +1,39 @@
+@media screen and (max-width: 1400px) {
+  .categoryName {
+    font-size: 20px !important;
+  }
+
+  .textCategory {
+    font-size: 14px !important;
+  }
+}
+
+.box-category {
+  border-radius: 10px;
+  border-top: 2px solid #075098;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px 20px;
+}
+
+.textCategory {
+  padding: 5px 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.textCategory:hover,
+.the-detail-news:hover {
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+
+.categoryName {
+  font-size: 26px;
+  font-weight: 600;
+  padding: 0px 10px;
+  margin: 0px;
+}
+
+.the-line {
+  border-top: 0.1px solid #075098;
+}

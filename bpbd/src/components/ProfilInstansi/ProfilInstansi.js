@@ -22,23 +22,33 @@ function ProfilInstansi() {
   return(
     <>
       <div className="profil-instansi">
-        <div className="split-view-detail">
-          <div className="left-view-detail">
-            <div>
-              <p>PROFIL INSTANSI</p>
+        <div className="split-view-profil">
+          <div className="left-view-profil">
+            <div className="profil-top">
+              <p className="profil-title">PROFIL INSTANSI</p>
+              <img className="img-profil" src={ProfilData.logo_instansi}/>
             </div>
-            <div>
-              <img src={ProfilData.logo_instansi}/>
-              <p>{ProfilData.nama_instansi}</p>
-              <p>{ProfilData.tentang}</p>
+            <div className="profil-middle">
+              <p className="profil-name">{ProfilData.nama_instansi}</p>
+              <p className="profil-about">{ProfilData.tentang}</p>
             </div>
-            <div>
-              <p>{ProfilData.nama_kepala}</p>
-              <img src={ProfilData.foto_kepala} alt="foto-kepala"/>
+            <div className="profil-structure">
+              <p className="profil-title">STRUKTUR ORGANISASI</p>
+              <div className="the-structure">
+                <div className="photo-structure">
+                  <img src={ProfilData.foto_kepala} alt="foto-kepala" className="photo-profil"/>
+                  <p className="structure-name">{ProfilData.nama_kepala}</p>
+                </div>
+                <div className="photo-structure">
+                  <img src={ProfilData.foto_wakil_kepala} className="photo-profil" />
+                  <p className="structure-name">{ProfilData.nama_wakil_kepala}</p>
+                </div>
+                <div className="photo-structure">
+                  <img src={ProfilData.foto_sekretaris} className="photo-profil"/>
+                  <p className="structure-name">{ProfilData.nama_sekretaris}</p>
+                </div>
+              </div>
             </div>
-            
-            
-
           </div>
           <div className="rightView">
             <div className="categoryNews">

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import './CategoryArticle.css'
 
 function CategoryArticle() {
   //Mencari kategori artikel menggunakan id instansi
@@ -18,16 +19,18 @@ function CategoryArticle() {
     
   return(
     <>
-      <p className="subMenuName">Kategori Artikel</p>
-        {CategoryArticleData.map(item => 
-          <>
-            <p className="textCategory ">{item.nama_kategori}</p>
-            <hr></hr>   
-          </>            
-        )}
+      <div className="box-category">
+        <p className="categoryName">Kategori Artikel</p>
+          {CategoryArticleData.map(item => 
+            <>
+              <p className="textCategory ">{item.nama_kategori}</p>
+              <hr className="the-line"></hr>   
+            </>            
+          )}
+      </div>
+      
     </>
   );
-  
 } 
 
 export default CategoryArticle;
