@@ -5,15 +5,6 @@
   .left-view-profil{
     width: 100% !important;
   }
-  .profil-title{
-    font-size: 26px !important;
-  }
-  .profil-name{
-    font-size: 20px !important;
-  }
-  .profil-about, .structure-name{
-    font-size: 16px !important
-  }
   
 }
 .profil-instansi{
@@ -36,7 +27,7 @@
   flex-direction: column;
 }
 .profil-title{
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 600;
   text-align: center;
   margin-bottom: 10px;
@@ -47,7 +38,7 @@
   flex-direction: column;
 }
 .profil-name{
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 600;
 }
 .profil-about{

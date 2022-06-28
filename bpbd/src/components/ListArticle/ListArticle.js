@@ -3,17 +3,26 @@ import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './ListArticle.css';
+import { Pagination } from 'react-bootstrap'
 
 function ListArticle() {
-  //http://adminmesuji.embuncode.com/api/article?instansi_id=4&sort_type=asc&sort_by=created_at
-
+  const [Items, setItems] = useState([]);
   const [ArticleData, setArticleData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=4&sort_type=asc&sort_by=created_at")
+        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=8&per_page=2")
         .then(function (article) {
           setArticleData(article.data.data.data);
           console.log("console header: " + article.data.data.data);
+          let items = []; 
+          for (let number = 1; number<=article.data.data.last_page; number++){
+            items.push(
+              <Pagination.Item key={number} active={number === article.data.data.current_page}>
+              {number}
+            </Pagination.Item>,
+            );
+            setItems(items);
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -27,8 +36,8 @@ function ListArticle() {
       </div>
       <div className="listArticle">
         
-        <div className="splitView">
-          <div className="leftView">
+        <div className="split-view-list-article">
+          <div className="left-view-list-article">
             <div className='theNews'>
               {ArticleData.map(item => 
                 <div className="detailNews">
@@ -43,6 +52,9 @@ function ListArticle() {
                   </div>
                 </div>                
               )}
+            </div>
+            <div className="pagination">
+              <Pagination>{Items}</Pagination>
             </div>
           </div>
           <div className="rightView">

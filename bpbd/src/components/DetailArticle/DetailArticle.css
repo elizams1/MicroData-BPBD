@@ -6,11 +6,6 @@
   .left-view-detail {
     width: 100% !important;
   }
-
-  .detail-article-title {
-    font-size: 26px !important;
-  }
-
 }
 
 .detailArtikel {
@@ -28,7 +23,7 @@
 }
 
 .detail-article-title {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;

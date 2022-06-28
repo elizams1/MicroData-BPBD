@@ -1,29 +1,22 @@
-@media screen and (max-width: 1400px){
-  .categoryName {
-    font-size: 20px !important;
-  }
-  .textCategory {
-    font-size: 14px !important;
-  }
-}
 .box-category{
   border-radius: 10px;
   border-top: 2px solid #075098;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 5px 20px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 20px 20px;
 }
 .textCategory {
   padding: 5px 10px;
   margin-top: 5px;
   margin-bottom: 5px;
+  font-size: 16px;
 }
 .textCategory:hover,
 .the-detail-news:hover {
-  background-color: aliceblue;
+  background-color: rgb(7, 80, 152, 0.2);
   border-radius: 10px;
 }
 .categoryName {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 600;
   padding: 0px 10px;
   margin: 0px;

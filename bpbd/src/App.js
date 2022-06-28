@@ -17,8 +17,8 @@ function App() {
     <ChakraProvider>
       <Menu/>
       <Routes>
-        {/* <Route path="/" element={<Home/>}/>
-        <Route path="/" element={<ListArticle/>} /> */}
+        {/* <Route path="/" element={<Home/>}/> */}
+        {/* <Route path="/" element={<ListArticle/>} /> */}
         {/* <Route path="/" element={<ListNews/>} /> */}
         {/* <Route path="/" element={<DetailArticle/>}/> */}
         {/* <Route path="/" element={<DetailNews/>}/> */}

@@ -2,17 +2,10 @@
   .split-view-detail {
     flex-direction: column;
   }
-
   .left-view-detail {
     width: 100% !important;
   }
-
-  .detail-news-title {
-    font-size: 26px !important;
-  }
-
 }
-
 .detail-news {
   display: flex;
   justify-content: center;
@@ -28,7 +21,7 @@
 }
 
 .detail-news-title {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;

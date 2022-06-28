@@ -26,7 +26,7 @@ function ProfilInstansi() {
           <div className="left-view-profil">
             <div className="profil-top">
               <p className="profil-title">PROFIL INSTANSI</p>
-              <img className="img-profil" src={ProfilData.logo_instansi}/>
+              <img className="img-profil" src={ProfilData.logo_instansi} alt="logo-instansi"/>
             </div>
             <div className="profil-middle">
               <p className="profil-name">{ProfilData.nama_instansi}</p>
@@ -40,11 +40,11 @@ function ProfilInstansi() {
                   <p className="structure-name">{ProfilData.nama_kepala}</p>
                 </div>
                 <div className="photo-structure">
-                  <img src={ProfilData.foto_wakil_kepala} className="photo-profil" />
+                  <img src={ProfilData.foto_wakil_kepala} className="photo-profil" alt="foto-wakil-kepala" />
                   <p className="structure-name">{ProfilData.nama_wakil_kepala}</p>
                 </div>
                 <div className="photo-structure">
-                  <img src={ProfilData.foto_sekretaris} className="photo-profil"/>
+                  <img src={ProfilData.foto_sekretaris} className="photo-profil" alt="foto-sekretaris"/>
                   <p className="structure-name">{ProfilData.nama_sekretaris}</p>
                 </div>
               </div>

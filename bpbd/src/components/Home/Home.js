@@ -114,7 +114,7 @@ function Home() {
           <img className="logoImg2" src={HomeData.logo_instansi} alt="thelogo"></img>
         </div>
       </div>
-      <div className="splitView">
+      <div className="split-view-home">
         <div className="left-view">
           <div className="gallery">
             <p className="subMenuName">Galeri</p>
@@ -132,15 +132,15 @@ function Home() {
             <p className="subMenuName">Berita</p>
             <div className='theNews'>
               {NewsData.map(item => 
-                <div className="the-detail-news">
+                <div className="the-detail-news-home">
                   <img
-                    className="the-picture"
+                    className="the-picture2"
                     src={item.image_file_data}
-                    alt="the-detail-news-photo"
+                    alt="the-detail-news"
                   />
                   <div>
-                    <p className="textDetails">{item.title}</p>
-                    <p className="textIntro">{item.intro}</p>
+                    <p className="textDetails3">{item.title}</p>
+                    <p className="textIntro3">{item.intro}</p>
                   </div>
                 </div>                
               )}
@@ -155,11 +155,10 @@ function Home() {
                     <p className="textDetails2">{item.title}</p>
                     <p className="textIntro2">{item.intro}</p>
                   </div>
-                  
                   <img
-                    className="the-picture"
+                    className="the-picture2"
                     src={item.image_file_data}
-                    alt="the-detail-article-photo"
+                    alt="the-detail-article"
                   />
                 </div>                
               )}

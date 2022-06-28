@@ -13,7 +13,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  Button,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 
@@ -64,7 +63,8 @@ function TheMenu(){
                   py={2}
                   transition='all 0.2s'
                   color='white'
-                  fontSize="20px"
+                  fontSize="xl"
+                  textTransform='uppercase'
                   _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
                   _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}
                   // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
@@ -76,6 +76,7 @@ function TheMenu(){
                   <MenuList>
                     {item.children.map(child =>
                       <MenuItem 
+                        fontSize="xl"
                          _hover={{ bg: 'aliceblue', color:'#075098' }}
                       >{child.name}</MenuItem>
                     )}
@@ -116,8 +117,8 @@ function TheMenu(){
                             transition='all 0.2s'
                             display='flex'
                             marginBottom="10px"
-                            color='#075098'
-                            fontSize="20px"
+                            fontSize="xl"
+                            textTransform='uppercase'
                             width= '100%'
                             textAlign="center"
                             _hover={{ bg: '#075098', borderRadius:'10px', color:'white' }}
@@ -133,6 +134,7 @@ function TheMenu(){
                               {item.children.map(child =>
                                 <MenuItem 
                                   color='#075098'
+                                  fontSize="xl"
                                 >{child.name}</MenuItem>
                               )}
                             </MenuList> : null

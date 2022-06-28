@@ -1,13 +1,10 @@
 @media screen and (max-width: 1400px){
-  .splitView{
+  .split-view-list-news{
     flex-direction: column;
     align-items: center;
   }
-  .leftView{
+  .left-View-list-news{
     margin-bottom: 25px; 
-  }
-  .theNews{
-    width: 100% !important;
   }
   .thePicture{
     height: 250px!important;;
@@ -21,7 +18,7 @@
   }
 }
 .newsTitle {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 600;
   text-align: center;
 }
@@ -30,9 +27,15 @@
   justify-content: center;
   margin-bottom: 25px;
 }
-.leftView{
-  align-items: center;
-  width: 75%;
+.split-view-list-news{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 80%;
+  margin-top: 25px;
+}
+.rightView{
+  width: 25%;
 }
 .the-news{
   display: flex;
@@ -41,12 +44,17 @@
 }
 .detailNews{
   flex-direction: column;
-  margin-bottom: 20px;  
+  margin-bottom: 25px;  
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   border-radius: 10px;
 }
+.detailNews:hover{
+  transform: translateX(-10px);
+  background-color: rgb(7, 80, 152, 0.2);
+}
+
 .thePicture{
-  height: 350px;
+  height: 400px;
   width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -55,6 +63,13 @@
   width: 100%;
   align-items: center;
   padding: 0px 20px 20px 20px;
+}
+.textDetails{
+  font-size: 20px;
+  font-weight: 600;
+}
+.textIntro{
+  font-size: 16px;
 }
 .textDetails, .textIntro{
   padding: 0px;

@@ -1,10 +1,30 @@
+@media screen and (max-width: 1400px){
+  .split-view-list-article {
+    flex-direction: column;
+    align-items: center;
+  }
+  .left-view-list-article {
+    margin-bottom: 25px;
+  }
+}
+.articleTitle{
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
 .listArticle {
   display: flex;
   justify-content: center;
   margin-bottom: 25px;
 }
-.articleTitle{
-  font-size: 30px;
-  font-weight: 600;
-  text-align: center;
+.split-view-list-article {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 80%;
+  margin-top: 25px;
+}
+.pagination{
+  display: flex;
+  justify-content: center;
 }
