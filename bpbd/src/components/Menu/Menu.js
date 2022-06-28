@@ -77,6 +77,7 @@ function TheMenu(){
                     {item.children.map(child =>
                       <MenuItem 
                         fontSize="xl"
+                        color='#075098'
                          _hover={{ bg: 'aliceblue', color:'#075098' }}
                       >{child.name}</MenuItem>
                     )}

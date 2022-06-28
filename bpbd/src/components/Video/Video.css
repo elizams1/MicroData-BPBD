@@ -1,0 +1,41 @@
+@media screen and (max-width: 1400px) {
+  .split-view-video {
+    flex-direction: column !important;
+  }
+  .left-view-video {
+    width: 100% !important;
+  }
+  .right-view-video {
+    display: flex;
+    width: 100% !important;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 20px;
+  }
+}
+.video-page{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.split-view-video{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 25px;
+  gap: 20px;
+  align-items: flex-start;
+}
+.left-view-video{
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  flex-direction: column;
+}
+
+.video-title{
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
