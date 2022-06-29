@@ -8,15 +8,15 @@ function Photo(){
 
   const [PhotoData, setPhotoData] = useState([]);
   useEffect(() => {
-      axios
-        .get("http://adminmesuji.embuncode.com/api/image-gallery?instansi_id=8")
-        .then(function (photo) {
-          setPhotoData(photo.data.data.data);
-          console.log("console header: " + photo.data.data.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    axios
+      .get("http://adminmesuji.embuncode.com/api/image-gallery?instansi_id=8")
+      .then(function (photo) {
+        setPhotoData(photo.data.data.data);
+        console.log("console header: " + photo.data.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }, []);
   
   return( 
