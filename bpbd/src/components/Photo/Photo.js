@@ -25,8 +25,29 @@ function Photo(){
       <div className="photo-page">
         <div className="split-view-photo">
           <div className="left-view-photo">
-            <p className="photo-title">FOTO</p>
-            
+            <p className="photo-title">GALERI FOTO</p>
+            <div className="the-gallery">
+            {
+              PhotoData.map(item =>
+              <div className="the-sub-gallery">
+                {
+                  item.image_gallery_item.map(items =>
+                    <div className="the-photo">
+                      <img src={items.image_file_data} alt="galeri" className="the-img"/>
+                      <p className="the-desc">{items.description}</p>
+                    </div>
+                    
+                
+                  
+                  )
+                }
+              
+              </div>
+              
+              )
+            }
+              
+            </div>
           </div>
           <div className="right-view-photo">
             <div className="categoryNews">
