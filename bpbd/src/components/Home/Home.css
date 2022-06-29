@@ -134,7 +134,8 @@
 }
 .split-view-home{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 50px;
   width: 80%;
   margin-top: 25px;
 }

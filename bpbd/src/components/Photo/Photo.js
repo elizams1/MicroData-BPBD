@@ -19,7 +19,6 @@ function Photo(){
         });
     }, []);
   
-  console.log(PhotoData);
   return( 
     <>
       <div className="photo-page">
@@ -36,17 +35,11 @@ function Photo(){
                       <img src={items.image_file_data} alt="galeri" className="the-img"/>
                       <p className="the-desc">{items.description}</p>
                     </div>
-                    
-                
-                  
                   )
                 }
-              
               </div>
-              
               )
-            }
-              
+            } 
             </div>
           </div>
           <div className="right-view-photo">

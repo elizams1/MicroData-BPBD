@@ -26,7 +26,8 @@ function App() {
         {/* <Route path="/" element={<DetailNews/>}/> */}
         {/* <Route path="/" element={<ProfilInstansi/>}/> */}
         {/* <Route path="/" element={<Video/>}/> */}
-        <Route path="/" element={<Photo/>}/>
+        {/* <Route path="/" element={<Photo/>}/> */}
+        
       </Routes>
       <Footer/>
     </ChakraProvider>
