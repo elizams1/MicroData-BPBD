@@ -53,103 +53,111 @@ function TheMenu(){
   return(
     <>
       <div className="theMenu">
-        <div className="the-list-menu">
-          {MenuData.map(item=>
-          <Menu>
-            {({isOpen})=>(
-              <>
-                <MenuButton 
-                  px={2}
-                  py={2}
-                  transition='all 0.2s'
-                  color='white'
-                  fontSize="xl"
-                  textTransform='uppercase'
-                  _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
-                  _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}
-                  // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
-                isActive={isOpen}
-                > 
-                  {isOpen ? item.name : item.name}
-                </MenuButton>
-                { item.children.length > 0 ? 
-                  <MenuList>
-                    {item.children.map(child =>
-                      <MenuItem 
-                        fontSize="xl"
-                        color='#075098'
-                         _hover={{ bg: 'aliceblue', color:'#075098' }}
-                      >{child.name}</MenuItem>
-                    )}
-                  </MenuList> : null
-                }
-              </>
-            )}
-          </Menu>        
-        )}
-        </div>
-        <div className="drawer">
-          <div className="theName">
+        <div className="the-menu-1">
+          <div className="theName1">
             <img className="logoMenu" src={LogoData.logo_instansi} alt="thelogo" ></img>
             <p className="nameInstansi">{LogoData.nama_instansi}</p>
           </div>
-          <div className="theDrawer">
-            <div className="buttonDrawer" onClick={onOpen}>
-              <BsList size={35} color="#fff" className="icon"/>
-            </div>
-            <Drawer
-              isOpen={isOpen}
-              placement='right'
-              onClose={onClose}
-              finalFocusRef={btnRef}
-            >
-              <DrawerOverlay />
-              <DrawerContent>
-                <DrawerCloseButton />
-                <DrawerHeader borderBottomWidth='1px' color= "#075098">Menu</DrawerHeader>              
-                <DrawerBody>
-                  {MenuData.map(item=>
-                    <Menu>
-                      {({isOpen})=>(
-                        <>
-                          <MenuButton 
-                            px={2}
-                            py={2}
-                            transition='all 0.2s'
-                            display='flex'
-                            marginBottom="10px"
-                            fontSize="xl"
-                            textTransform='uppercase'
-                            width= '100%'
-                            textAlign="center"
-                            _hover={{ bg: '#075098', borderRadius:'10px', color:'white' }}
-                            _expanded={{boxShadow: 'outline', borderRadius:'10px' }}
-                            // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
-                          isActive={isOpen}
-                          > 
-                            {isOpen ? item.name : item.name}
-                          </MenuButton>
-                          { item.children.length > 0 ? 
-                            <MenuList  
-                             >
-                              {item.children.map(child =>
-                                <MenuItem 
-                                  color='#075098'
-                                  fontSize="xl"
-                                >{child.name}</MenuItem>
-                              )}
-                            </MenuList> : null
-                          }
-                        </>
+          <div className="the-list-menu">
+            {MenuData.map(item=>
+            <Menu>
+              {({isOpen})=>(
+                <>
+                  <MenuButton 
+                    px={2}
+                    py={2}
+                    transition='all 0.2s'
+                    color='white'
+                    fontSize="xl"
+                    textTransform='uppercase'
+                    _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
+                    _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}
+                    // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
+                  isActive={isOpen}
+                  > 
+                    {isOpen ? item.name : item.name}
+                  </MenuButton>
+                  { item.children.length > 0 ? 
+                    <MenuList>
+                      {item.children.map(child =>
+                        <MenuItem 
+                          fontSize="xl"
+                          color='#075098'
+                          _hover={{ bg: 'aliceblue', color:'#075098' }}
+                        >{child.name}</MenuItem>
                       )}
-                    </Menu>        
-                  )}
-                </DrawerBody>
-              </DrawerContent>
-            </Drawer>
+                    </MenuList> : null
+                  }
+                </>
+              )}
+            </Menu>        
+          )}
           </div>
-          
         </div>
+        <div className="the-menu-2">
+          <div className="drawer">
+            <div className="theName">
+              <img className="logoMenu" src={LogoData.logo_instansi} alt="thelogo" ></img>
+              <p className="nameInstansi">{LogoData.nama_instansi}</p>
+            </div>
+            <div className="theDrawer">
+              <div className="buttonDrawer" onClick={onOpen}>
+                <BsList size={35} color="#fff" className="icon"/>
+              </div>
+              <Drawer
+                isOpen={isOpen}
+                placement='right'
+                onClose={onClose}
+                finalFocusRef={btnRef}
+              >
+                <DrawerOverlay />
+                <DrawerContent>
+                  <DrawerCloseButton />
+                  <DrawerHeader borderBottomWidth='1px' color= "#075098">Menu</DrawerHeader>              
+                  <DrawerBody>
+                    {MenuData.map(item=>
+                      <Menu>
+                        {({isOpen})=>(
+                          <>
+                            <MenuButton 
+                              px={2}
+                              py={2}
+                              transition='all 0.2s'
+                              display='flex'
+                              marginBottom="10px"
+                              fontSize="xl"
+                              textTransform='uppercase'
+                              width= '100%'
+                              textAlign="center"
+                              _hover={{ bg: '#075098', borderRadius:'10px', color:'white' }}
+                              _expanded={{boxShadow: 'outline', borderRadius:'10px' }}
+                              // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
+                            isActive={isOpen}
+                            > 
+                              {isOpen ? item.name : item.name}
+                            </MenuButton>
+                            { item.children.length > 0 ? 
+                              <MenuList  
+                              >
+                                {item.children.map(child =>
+                                  <MenuItem 
+                                    color='#075098'
+                                    fontSize="xl"
+                                  >{child.name}</MenuItem>
+                                )}
+                              </MenuList> : null
+                            }
+                          </>
+                        )}
+                      </Menu>        
+                    )}
+                  </DrawerBody>
+                </DrawerContent>
+              </Drawer>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </>
   );

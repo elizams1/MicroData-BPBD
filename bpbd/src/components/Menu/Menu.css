@@ -1,12 +1,6 @@
 @media screen and (max-width: 1400px) {
-  .button{
-    font-size: 16px !important;
-  }
-  .the-list-menu{
+  .the-list-menu, .the-menu-1{
     display: none !important;
-  }
-  .button{
-    display: none !important; ;
   }
   .drawer{
     display: flex !important;
@@ -14,18 +8,25 @@
     justify-content: space-between;
     align-items: center;
   }
-  .nameInstansi{
-    color:#fff;
-    margin: 0px;
-  }
   .logoMenu{
-    width: 10%;
+    width: 10% !important;
+  }
+  .theName1{
+    display: none !important;
   }
   .theName{
     display: flex;
     align-items: center;
     gap: 10px;
     width: 50%;
+  }
+  .the-menu-2{
+    display: flex;
+    align-items: center;
+    width: 80%;
+  }
+  .drawer{
+    width: 100%;
   }
   .theDrawer {
     display: flex !important;
@@ -48,7 +49,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
   height: 100px;
   width: 100%;
   background-color: #075098;
@@ -56,23 +56,25 @@
   border-bottom-right-radius: 20px;
   margin-bottom: 25px;
 }
+.the-menu-1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.theName1{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 50%;
+}
 .the-list-menu{
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
-/* .button{
-  color: #fff;
-  padding: 5px;
-  text-transform: uppercase;
-  font-size: 20px;
-}
-.button:hover{
-  color: #075098;
-  background-color: #fff;
-  border-radius: 10px;
-} */
 .drawer{
   display: none;
 }
@@ -91,4 +93,11 @@
   color: #fff;
   border-radius: 10px;
   text-align: center;
+}
+.nameInstansi {
+  color: #fff;
+  margin: 0px;
+}
+.logoMenu {
+  width: 5%;
 }
