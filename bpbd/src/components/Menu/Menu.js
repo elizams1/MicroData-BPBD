@@ -15,6 +15,7 @@ import {
   MenuItem,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
+import { Link } from "react-router-dom";
 
 function TheMenu(){
   // Mengambil data menu berdasarkan id instansi
@@ -63,13 +64,14 @@ function TheMenu(){
             <Menu>
               {({isOpen})=>(
                 <>
-                  <MenuButton 
+                  <Link to={"/"+ item.name}>
+                    <MenuButton 
                     px={2}
                     py={2}
                     transition='all 0.2s'
                     color='white'
                     fontSize="xl"
-                    textTransform='uppercase'
+                    
                     _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
                     _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}
                     // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
@@ -78,16 +80,24 @@ function TheMenu(){
                     {isOpen ? item.name : item.name}
                   </MenuButton>
                   { item.children.length > 0 ? 
+                    
                     <MenuList>
                       {item.children.map(child =>
+                      <Link to={"/"+child.name}>
+                        
                         <MenuItem 
                           fontSize="xl"
                           color='#075098'
                           _hover={{ bg: 'aliceblue', color:'#075098' }}
                         >{child.name}</MenuItem>
+                      </Link>
+                        
                       )}
-                    </MenuList> : null
+                    </MenuList>
+                     : null
                   }
+                  </Link>
+                  
                 </>
               )}
             </Menu>        
@@ -119,6 +129,7 @@ function TheMenu(){
                       <Menu>
                         {({isOpen})=>(
                           <>
+                          <Link to={"/"+item.name}>
                             <MenuButton 
                               px={2}
                               py={2}
@@ -147,6 +158,8 @@ function TheMenu(){
                                 )}
                               </MenuList> : null
                             }
+                          </Link>
+                            
                           </>
                         )}
                       </Menu>        

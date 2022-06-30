@@ -3,6 +3,7 @@ import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './Photo.css';
+import { Spinner } from '@chakra-ui/react';
 
 function Photo(){
 
@@ -21,6 +22,8 @@ function Photo(){
   
   return( 
     <>
+    {
+      PhotoData!= null ? 
       <div className="photo-page">
         <div className="split-view-photo">
           <div className="left-view-photo">
@@ -52,6 +55,14 @@ function Photo(){
           </div>
         </div>
       </div>
+      :
+      
+        <p>loading</p>
+        
+      
+
+    }
+      
     </>
   );
 }

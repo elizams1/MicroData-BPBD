@@ -15,27 +15,31 @@ import VisiMisi from './components/VisiMisi/VisiMisi.js';
 import DetailDocument from './components/DetailDocument/DetailDocument.js';
 import { ChakraProvider } from '@chakra-ui/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route, BrowserRouter} from "react-router-dom";
 
 function App() {
   return (
     <ChakraProvider>
       <Menu/>
       <Routes>
-        {/* <Route path="/" element={<Home/>}/> */}
-        {/* <Route path="/" element={<ListArticle/>} /> */}
-        {/* <Route path="/" element={<ListNews/>} /> */}
-        {/* <Route path="/" element={<DetailArticle/>}/> */}
-        {/* <Route path="/" element={<DetailNews/>}/> */}
-        {/* <Route path="/" element={<ProfilInstansi/>}/> */}
-        {/* <Route path="/" element={<Video/>}/> */}
-        {/* <Route path="/" element={<Photo/>}/> */}
-        {/* <Route path="/" element={<Document/>}/> */}
-        <Route path="/" element={<DetailDocument/>}/>
+        <Route exact path="/" element={<Home/>}/>
+        <Route path="/Beranda" element={<Home/>}/>
+        <Route path="/Artikel" element={<ListArticle/>} />
+        <Route path="/Berita" element={<ListNews/>} />
+        {/* <Route path="/article/:slug" element={<DetailArticle/>}/> */}
+        {/* <Route path="/news/:slug" element={<DetailNews/>}/> */}
+        {/* <Route path="/about" element={<ProfilInstansi/>}/> */}
+        <Route path="/Video" element={<Video/>}/> 
+        <Route path="/Foto" element={<Photo/>}/>
+        <Route path="/Dokumen" element={<Document/>}/>
+        {/* <Route path="/document/:slug" element={<DetailDocument/>}/> */}
         {/* <Route path="/" element={<VisiMisi/>}/> */}
       </Routes>
       <Footer/>
     </ChakraProvider>
+      
+      
+    
   );
 }
 

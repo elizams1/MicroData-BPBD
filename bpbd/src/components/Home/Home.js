@@ -5,6 +5,7 @@ import { BsEnvelope, BsGeo } from "react-icons/bs";
 import Carousel from '../Carousel/Carousel.js';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
+import { Spinner } from '@chakra-ui/react';
 
 
 function Home() {
@@ -71,110 +72,122 @@ function Home() {
     }, []);
 
   return (
-    <div className="home">
-      <div className="columnHome">
-        <div className="logo">
-          <img className="logoImg" src={HomeData.logo_instansi} alt="thelogo"></img>
-        </div>
-        <div> 
-          <p  className="name">{HomeData.nama_instansi}</p>
-        </div>
-        <div className="description">
-          <div className="email">
-            <div className="icon">
-              <BsEnvelope size={35} className="icon"/>
-            </div>
-            <div>
-              <p className="details1">Email</p>
-              <p className="details">{HomeData.email}</p>
-            </div>
-          </div>
-          <div className="location">
-            <div className="icon">
-              <BsGeo size={35} className="icon"/>
-            </div>
-            <div>
-              <p className="details1">Alamat</p>
-              <p className="details">{HomeData.alamat}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="carousel">
-        <Carousel />
-      </div>
-      <div className="theInstansi">
-        <div>
-          <p className="nameTitle">{HomeData.nama_instansi}</p>
-          <div className="buttonDetails">
-            <p className="nameButton">Lihat Selengkapnya</p>
-          </div>
-        </div>
-        <div className="lg-style">
-          <img className="logoImg2" src={HomeData.logo_instansi} alt="thelogo"></img>
-        </div>
-      </div>
-      <div className="split-view-home">
-        <div className="left-view">
-          <div className="gallery">
-            <p className="subMenuName">Galeri</p>
-            <div className='theGallery'>
-            {PhotoData.map(item => 
-                <img
-                  className="the-picture"
-                  src={item}
-                  alt="First slide"
-                />
-            )}
-            </div>
-          </div>
-          <div className="news">
-            <p className="subMenuName">Berita</p>
-            <div className='theNews'>
-              {NewsData.map(item => 
-                <div className="the-detail-news-home">
-                  <img
-                    className="the-picture2"
-                    src={item.image_file_data}
-                    alt="the-detail-news"
-                  />
-                  <div>
-                    <p className="textDetails3">{item.title}</p>
-                    <p className="textIntro3">{item.intro}</p>
+    <>
+      {
+        HomeData!= null && NewsData != null &&ArticleData != null && PhotoData != null ? 
+
+          <div className="home">
+            <div className="columnHome">
+              <div className="logo">
+                <img className="logoImg" src={HomeData.logo_instansi} alt="thelogo"></img>
+              </div>
+              <div> 
+                <p  className="name">{HomeData.nama_instansi}</p>
+              </div>
+              <div className="description">
+                <div className="email">
+                  <div className="icon">
+                    <BsEnvelope size={35} className="icon"/>
                   </div>
-                </div>                
-              )}
-            </div>
-          </div>
-          <div className="article">
-            <p className="subMenuName">Artikel</p>
-            <div className='theArticle'>
-              {ArticleData.map(item => 
-                <div className="the-detail-article">
                   <div>
-                    <p className="textDetails2">{item.title}</p>
-                    <p className="textIntro2">{item.intro}</p>
+                    <p className="details1">Email</p>
+                    <p className="details">{HomeData.email}</p>
                   </div>
-                  <img
-                    className="the-picture2"
-                    src={item.image_file_data}
-                    alt="the-detail-article"
-                  />
-                </div>                
-              )}
+                </div>
+                <div className="location">
+                  <div className="icon">
+                    <BsGeo size={35} className="icon"/>
+                  </div>
+                  <div>
+                    <p className="details1">Alamat</p>
+                    <p className="details">{HomeData.alamat}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="carousel">
+              <Carousel />
+            </div>
+            <div className="theInstansi">
+              <div>
+                <p className="nameTitle">{HomeData.nama_instansi}</p>
+                <div className="buttonDetails">
+                  <p className="nameButton">Lihat Selengkapnya</p>
+                </div>
+              </div>
+              <div className="lg-style">
+                <img className="logoImg2" src={HomeData.logo_instansi} alt="thelogo"></img>
+              </div>
+            </div>
+            <div className="split-view-home">
+              <div className="left-view">
+                <div className="gallery">
+                  <p className="subMenuName">Galeri</p>
+                  <div className='theGallery'>
+                  {PhotoData.map(item => 
+                      <img
+                        className="the-picture"
+                        src={item}
+                        alt="First slide"
+                      />
+                  )}
+                  </div>
+                </div>
+                <div className="news">
+                  <p className="subMenuName">Berita</p>
+                  <div className='theNews'>
+                    {NewsData.map(item => 
+                      <div className="the-detail-news-home">
+                        <img
+                          className="the-picture2"
+                          src={item.image_file_data}
+                          alt="the-detail-news"
+                        />
+                        <div>
+                          <p className="textDetails3">{item.title}</p>
+                          <p className="textIntro3">{item.intro}</p>
+                        </div>
+                      </div>                
+                    )}
+                  </div>
+                </div>
+                <div className="article">
+                  <p className="subMenuName">Artikel</p>
+                  <div className='theArticle'>
+                    {ArticleData.map(item => 
+                      <div className="the-detail-article">
+                        <div>
+                          <p className="textDetails2">{item.title}</p>
+                          <p className="textIntro2">{item.intro}</p>
+                        </div>
+                        <img
+                          className="the-picture2"
+                          src={item.image_file_data}
+                          alt="the-detail-article"
+                        />
+                      </div>                
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="right-view">
+                <div className="categoryNews">
+                  <CategoryNews/>
+                </div>
+                <div className="categoryArticle">
+                  <CategoryArticle/>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="right-view">
-          <div className="categoryNews">
-            <CategoryNews/>
-          </div>
-          <div className="categoryArticle">
-            <CategoryArticle/>
-          </div>
-        </div>
-      </div>
-    </div>  
+          
+        : 
+        <>
+          <Spinner size='xl' />
+          <p>Loading</p>
+        </>
+      }
+     </> 
   );
 }
 
