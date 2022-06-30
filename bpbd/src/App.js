@@ -12,6 +12,7 @@ import Video from './components/Video/Video.js';
 import Photo from './components/Photo/Photo.js';
 import Document from './components/Document/Document.js';
 import VisiMisi from './components/VisiMisi/VisiMisi.js';
+import DetailDocument from './components/DetailDocument/DetailDocument.js';
 import { ChakraProvider } from '@chakra-ui/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route} from "react-router-dom";
@@ -30,7 +31,8 @@ function App() {
         {/* <Route path="/" element={<Video/>}/> */}
         {/* <Route path="/" element={<Photo/>}/> */}
         {/* <Route path="/" element={<Document/>}/> */}
-        <Route path="/" element={<VisiMisi/>}/>
+        <Route path="/" element={<DetailDocument/>}/>
+        {/* <Route path="/" element={<VisiMisi/>}/> */}
       </Routes>
       <Footer/>
     </ChakraProvider>
