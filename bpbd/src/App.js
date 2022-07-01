@@ -23,16 +23,16 @@ function App() {
       <Menu/>
       <Routes>
         <Route exact path="/" element={<Home/>}/>
-        <Route path="/Beranda" element={<Home/>}/>
-        <Route path="/Artikel" element={<ListArticle/>} />
-        <Route path="/Berita" element={<ListNews/>} />
+        <Route path="/home" element={<Home/>}/>
+        <Route path="/article" element={<ListArticle/>} />
+        <Route path="/news" element={<ListNews/>} />
+        <Route path="/profil-instansi" element={<ProfilInstansi/>}/>
+        <Route path="/video-gallery" element={<Video/>}/> 
+        <Route path="/image-gallery" element={<Photo/>}/>
+        <Route path="/document" element={<Document/>}/>
+        {/* <Route path="/document/:slug" element={<DetailDocument/>}/> */}
         {/* <Route path="/article/:slug" element={<DetailArticle/>}/> */}
         {/* <Route path="/news/:slug" element={<DetailNews/>}/> */}
-        {/* <Route path="/about" element={<ProfilInstansi/>}/> */}
-        <Route path="/Video" element={<Video/>}/> 
-        <Route path="/Foto" element={<Photo/>}/>
-        <Route path="/Dokumen" element={<Document/>}/>
-        {/* <Route path="/document/:slug" element={<DetailDocument/>}/> */}
         {/* <Route path="/" element={<VisiMisi/>}/> */}
       </Routes>
       <Footer/>

@@ -6,6 +6,7 @@ import Carousel from '../Carousel/Carousel.js';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import { Spinner } from '@chakra-ui/react';
+import { Link } from "react-router-dom";
 
 
 function Home() {
@@ -111,9 +112,11 @@ function Home() {
             <div className="theInstansi">
               <div>
                 <p className="nameTitle">{HomeData.nama_instansi}</p>
-                <div className="buttonDetails">
-                  <p className="nameButton">Lihat Selengkapnya</p>
-                </div>
+                <Link to="/profil-instansi" >
+                  <div className="buttonDetails">
+                    <p className="nameButton">Lihat Selengkapnya</p>
+                  </div>
+                </Link>
               </div>
               <div className="lg-style">
                 <img className="logoImg2" src={HomeData.logo_instansi} alt="thelogo"></img>
@@ -122,7 +125,9 @@ function Home() {
             <div className="split-view-home">
               <div className="left-view">
                 <div className="gallery">
-                  <p className="subMenuName">Galeri</p>
+                  <Link to="/image-gallery">
+                    <p  className="subMenuName">Galeri</p>
+                  </Link>
                   <div className='theGallery'>
                   {PhotoData.map(item => 
                       <img
@@ -134,7 +139,9 @@ function Home() {
                   </div>
                 </div>
                 <div className="news">
-                  <p className="subMenuName">Berita</p>
+                  <Link to="/news">
+                    <p className="subMenuName">Berita</p>
+                  </Link>
                   <div className='theNews'>
                     {NewsData.map(item => 
                       <div className="the-detail-news-home">
@@ -152,7 +159,9 @@ function Home() {
                   </div>
                 </div>
                 <div className="article">
-                  <p className="subMenuName">Artikel</p>
+                  <Link to="/article">
+                    <p className="subMenuName">Artikel</p>
+                  </Link>
                   <div className='theArticle'>
                     {ArticleData.map(item => 
                       <div className="the-detail-article">

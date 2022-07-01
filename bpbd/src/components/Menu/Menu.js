@@ -64,26 +64,47 @@ function TheMenu(){
             <Menu>
               {({isOpen})=>(
                 <>
-                  <Link to={"/"+ item.name}>
+                  {
+                    item.url != null ?
+                    <Link to={""+item.url}>
+                      <MenuButton 
+                      px={2}
+                      py={2}
+                      transition='all 0.2s'
+                      color='white'
+                      fontSize="xl"
+                      
+                      _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
+                      _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}
+                      // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
+                    isActive={isOpen}
+                    > 
+                      {isOpen ? item.name : item.name}
+                    </MenuButton>
+                  </Link> : 
+                  <>
                     <MenuButton 
-                    px={2}
-                    py={2}
-                    transition='all 0.2s'
-                    color='white'
-                    fontSize="xl"
-                    
-                    _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
-                    _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}
-                    // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
-                  isActive={isOpen}
-                  > 
-                    {isOpen ? item.name : item.name}
-                  </MenuButton>
+                      px={2}
+                      py={2}
+                      transition='all 0.2s'
+                      color='white'
+                      fontSize="xl"
+                      
+                      _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
+                      _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}
+                      // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
+                    isActive={isOpen}
+                    > 
+                      {isOpen ? item.name : item.name}
+                    </MenuButton>
+                  </>
+                  }
+                  
                   { item.children.length > 0 ? 
                     
                     <MenuList>
                       {item.children.map(child =>
-                      <Link to={"/"+child.name}>
+                      <Link to={""+child.url}>
                         
                         <MenuItem 
                           fontSize="xl"
@@ -96,7 +117,7 @@ function TheMenu(){
                     </MenuList>
                      : null
                   }
-                  </Link>
+                  
                   
                 </>
               )}
