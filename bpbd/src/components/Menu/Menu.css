@@ -8,9 +8,6 @@
     justify-content: space-between;
     align-items: center;
   }
-  .logoMenu{
-    width: 10% !important;
-  }
   .theName1{
     display: none !important;
   }
@@ -99,5 +96,5 @@
   margin: 0px;
 }
 .logoMenu {
-  width: 5%;
+  width: 10%;
 }

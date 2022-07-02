@@ -10,7 +10,7 @@ function ListArticle() {
   const [ArticleData, setArticleData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=8&per_page=2")
+        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=31")
         .then(function (article) {
           setArticleData(article.data.data.data);
           console.log("console header: " + article.data.data.data);

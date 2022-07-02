@@ -7,7 +7,7 @@ function CategoryNews() {
   const [CategoryNewsData, setCategoryNewsData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/news/categories/3")
+        .get("http://adminmesuji.embuncode.com/api/news/categories/31")
         .then(function (catNews) {
           setCategoryNewsData(catNews.data.data);
           console.log("console header: " + catNews.data.data);

@@ -28,9 +28,15 @@ function Home() {
   const [NewsData, setNewsData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc&per_page=3")
+        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31")
         .then(function (news) {
-          setNewsData(news.data.data.data);
+          let temp =[]
+          for (let i = 0; i < 4; i += 1) {
+              if (i < news.data.data.data.length) {
+                  temp.push(news.data.data.data[i])
+              }
+          }
+          setNewsData(temp);
           console.log("console header: " + news.data.data.data);
         })
         .catch(function (error) {
@@ -42,9 +48,15 @@ function Home() {
   const [ArticleData, setArticleData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=4&per_page=3&sort_type=asc&sort_by=created_at")
+        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=31")
         .then(function (article) {
-          setArticleData(article.data.data.data);
+          let temp =[]
+          for (let i = 0; i < 4; i += 1) {
+              if (i < article.data.data.data.length) {
+                  temp.push(article.data.data.data[i])
+              }
+          }
+          setArticleData(temp);
           console.log("console header: " + article.data.data.data);
         })
         .catch(function (error) {
@@ -61,11 +73,34 @@ function Home() {
           let theImage = [];
           for (let i = 0; i < photo.data.data.data.length; i++) {
             for (let j = 0; j < photo.data.data.data[i].image_gallery_item.length; j++) {
-              theImage.push(photo.data.data.data[i].image_gallery_item[j].image_file_data)
+              theImage.push(photo.data.data.data[i].image_gallery_item[j])
             }
           }
           setPhotoData(theImage);
           console.log("console header: " + photo.data.data.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, []);
+
+  const [VideoData, setVideoData] = useState([])
+  useEffect(() => {
+      axios
+        .get("http://adminmesuji.embuncode.com/api/video-gallery?instansi_id=31")
+        .then(function (video) {
+          let theVideo = [];
+          for (let i = 0; i < video.data.data.data.length; i++) {
+            for (let j = 0; j < video.data.data.data[i].image_gallery_item.length; j++) {
+              theVideo.push(video.data.data.data[i].image_gallery_item[j])
+            }
+          }
+          let theView = [];
+          for (let i = 0; i < 3; i++) {
+            theView.push(theVideo[i])
+          }
+          setVideoData(theView);
+          console.log("console header: " + video.data.data.data);
         })
         .catch(function (error) {
           console.log(error);
@@ -124,17 +159,43 @@ function Home() {
             </div>
             <div className="split-view-home">
               <div className="left-view">
-                <div className="gallery">
+                <div className="galleryFoto">
                   <Link to="/image-gallery">
-                    <p  className="subMenuName">Galeri</p>
+                    <p  className="subMenuName">Galeri Foto</p>
                   </Link>
                   <div className='theGallery'>
                   {PhotoData.map(item => 
-                      <img
-                        className="the-picture"
-                        src={item}
-                        alt="First slide"
-                      />
+                      <div className="the-photo2">
+                        <img
+                          className="the-picture"
+                          src={item.image_file_data}
+                          alt="First slide"
+                        />
+                        <p className="the-description-image">
+                          {item.description}
+                        </p>
+                      </div>
+                      
+                  )}
+                  </div>
+                </div>
+                <div className="galleryVideo">
+                  <Link to="/video-gallery">
+                    <p  className="subMenuName">Galeri Video</p>
+                  </Link>
+                  <div className="the-vidio">
+                  {VideoData.map(item => 
+                      <div className="the-yutub">
+                        <iframe
+                          className="the-vidio2"
+                          src={'https://www.youtube.com/embed/'+item.video_url} 
+                          alt="First slide"
+                          allowFullScreen
+                        />
+                        <p className="text-description-video">
+                          {item.description}
+                        </p>
+                      </div>
                   )}
                   </div>
                 </div>
@@ -144,17 +205,19 @@ function Home() {
                   </Link>
                   <div className='theNews'>
                     {NewsData.map(item => 
-                      <div className="the-detail-news-home">
-                        <img
-                          className="the-picture2"
-                          src={item.image_file_data}
-                          alt="the-detail-news"
-                        />
-                        <div>
-                          <p className="textDetails3">{item.title}</p>
-                          <p className="textIntro3">{item.intro}</p>
+                      <Link to={{ pathname: '/news/' + item.id }} className="the-detail-news-home">
+                        <div className="the-detail-news-home-2">
+                            <img
+                              className="the-picture2"
+                              src={item.image_file_data}
+                              alt="the-detail-news"
+                            />
+                            <div>
+                              <p className="textDetails3">{item.title}</p>
+                              <p className="textIntro3">{item.intro}</p>
+                            </div>
                         </div>
-                      </div>                
+                      </Link>            
                     )}
                   </div>
                 </div>
@@ -164,17 +227,20 @@ function Home() {
                   </Link>
                   <div className='theArticle'>
                     {ArticleData.map(item => 
-                      <div className="the-detail-article">
-                        <div>
-                          <p className="textDetails2">{item.title}</p>
-                          <p className="textIntro2">{item.intro}</p>
+                      <Link to={{ pathname:'/article/' + item.id}} className="the-detail-article">
+                        <div className="the-detail-article-2" >
+                          <div>
+                            <p className="textDetails2">{item.title}</p>
+                            <p className="textIntro2">{item.intro}</p>
+                          </div>
+                          <img
+                            className="the-picture2"
+                            src={item.image_file_data}
+                            alt="the-detail-article"
+                          />
                         </div>
-                        <img
-                          className="the-picture2"
-                          src={item.image_file_data}
-                          alt="the-detail-article"
-                        />
-                      </div>                
+                      </Link>
+                                      
                     )}
                   </div>
                 </div>

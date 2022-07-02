@@ -55,10 +55,12 @@ function TheMenu(){
     <>
       <div className="theMenu">
         <div className="the-menu-1">
-          <div className="theName1">
-            <img className="logoMenu" src={LogoData.logo_instansi} alt="thelogo" ></img>
-            <p className="nameInstansi">{LogoData.nama_instansi}</p>
-          </div>
+          <Link to="/home">
+            <div className="theName1">
+              <img className="logoMenu" src={LogoData.logo_instansi} alt="thelogo" ></img>
+              <p className="nameInstansi">{LogoData.nama_instansi}</p>
+            </div>
+          </Link>
           <div className="the-list-menu">
             {MenuData.map(item=>
             <Menu>
@@ -150,7 +152,7 @@ function TheMenu(){
                       <Menu>
                         {({isOpen})=>(
                           <>
-                          <Link to={"/"+item.name}>
+                          <Link to={""+item.url}>
                             <MenuButton 
                               px={2}
                               py={2}

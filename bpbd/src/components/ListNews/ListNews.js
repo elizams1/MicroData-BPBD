@@ -3,7 +3,8 @@ import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './ListNews.css';
-import { Pagination } from 'react-bootstrap'
+import { Pagination } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 function ListNews(){
   //http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc
@@ -11,7 +12,7 @@ function ListNews(){
   const [NewsData, setNewsData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=15&per_page=2")
+        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31")
         .then(function (news) {
           setNewsData(news.data.data.data);
           console.log("console header: " + news.data.data.data);
@@ -39,18 +40,23 @@ function ListNews(){
         <div className="split-view-list-news">
           <div className="left-view-list-news">
             <div className='the-news'>
-              {NewsData.map(item => 
-                <div className="detailNews">
-                  <img
-                    className="thePicture"
-                    src={item.image_file_data}
-                    alt="First slide"
-                  />
-                  <div className="detail">
-                    <p className="textDetails">{item.title}</p>
-                    <p className="textIntro">{item.intro}</p>
-                  </div>
-                </div>                
+              {NewsData.map(item =>
+                <Link to={{ 
+                  pathname:'/news/' + item.id
+                 }}>
+                  <div className="detailNews">
+                    <img
+                      className="thePicture"
+                      src={item.image_file_data}
+                      alt="First slide"
+                    />
+                    <div className="detail">
+                      <p className="textDetails">{item.title}</p>
+                      <p className="textIntro">{item.intro}</p>
+                    </div>
+                  </div>  
+                </Link> 
+                              
               )}
             </div>
             <div className="pagination">

@@ -7,7 +7,7 @@ function CategoryArticle() {
   const [CategoryArticleData, setCategoryArticleData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/article/categories/3")
+        .get("http://adminmesuji.embuncode.com/api/article/categories/31")
         .then(function (catArticle) {
           setCategoryArticleData(catArticle.data.data);
           console.log("console header: " + catArticle.data.data);

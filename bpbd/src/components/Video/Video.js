@@ -9,7 +9,7 @@ function Video(){
   const [VideoData, setVideoData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/video-gallery?instansi_id=2")
+        .get("http://adminmesuji.embuncode.com/api/video-gallery?instansi_id=31")
         .then(function (video) {
           setVideoData(video.data.data.data);
           console.log("console header: " + video.data.data.data);
@@ -32,7 +32,7 @@ function Video(){
                 {
                   item.image_gallery_item.map(items =>
                     <div className="the-photo">
-                      <iframe src={'https://www.youtube.com/embed/'+items.video_url} alt="galeri" className="the-img"></iframe>
+                      <iframe src={'https://www.youtube.com/embed/'+items.video_url} alt="thevideo" className="the-img" allowFullScreen/>
                       <p className="the-desc">{items.description}</p>
                     </div>
                   )

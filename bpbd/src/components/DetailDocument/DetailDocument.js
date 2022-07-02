@@ -2,15 +2,17 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
+import { useParams } from "react-router";
 import './DetailDocument.css';
 
 function DetailDocument() {
+  const {id} = useParams()
 
   const [DetailDoc, setDetailDoc]=useState([]);
 
   useEffect(() => {
     axios
-      .get("http://adminmesuji.embuncode.com/api/dokumen/15-kadis-pupr-lampung-timur-minta-pho-proyek-bumijawa-purbolinggo-ditunda")
+      .get("http://adminmesuji.embuncode.com/api/dokumen/" + id)
       .then(function (doc) {
         setDetailDoc(doc.data.data[0]);
         console.log("console header: " + doc.data.data[0]);

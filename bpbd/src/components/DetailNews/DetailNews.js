@@ -2,14 +2,16 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
+import { useParams } from "react-router";
 import './DetailNews.css';
 
 function DetailNews() {
+  const {id} = useParams()
   //Mendapatkan detail news dari id news
   const [NewsDetail, setNewsDetail] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/news/3-musrenbang-rpjmd-kabupaten-lampung-timur-tahun-2021-2026")
+        .get("http://adminmesuji.embuncode.com/api/news/" + id)
         .then(function (news) {
           setNewsDetail(news.data.data);
           console.log("console header: " + news.data.data);
@@ -29,7 +31,7 @@ function DetailNews() {
               <img 
               class="thePicture" 
               src={NewsDetail.image_file_data}
-              alt="ArticlePhoto"/>
+              alt="NewsPhoto"/>
               <div dangerouslySetInnerHTML={{
                 __html: NewsDetail.content,
                 }} className="detail-content"

@@ -31,8 +31,8 @@ function App() {
         <Route path="/image-gallery" element={<Photo/>}/>
         <Route path="/document" element={<Document/>}/>
         {/* <Route path="/document/:slug" element={<DetailDocument/>}/> */}
-        {/* <Route path="/article/:slug" element={<DetailArticle/>}/> */}
-        {/* <Route path="/news/:slug" element={<DetailNews/>}/> */}
+        <Route path="/article/:id" element={<DetailArticle/>}/>
+        <Route path="/news/:id" element={<DetailNews/>}/>
         {/* <Route path="/" element={<VisiMisi/>}/> */}
       </Routes>
       <Footer/>
