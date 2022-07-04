@@ -14,6 +14,7 @@ import Document from './components/Document/Document.js';
 import VisiMisi from './components/VisiMisi/VisiMisi.js';
 import DetailDocument from './components/DetailDocument/DetailDocument.js';
 import ListNewsCategory from './components/ListNewsCategory/ListNewsCategory.js';
+import ListArticleCategory from './components/ListArticleCategory/ListArticleCategory.js';
 import { ChakraProvider } from '@chakra-ui/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter} from "react-router-dom";
@@ -26,8 +27,9 @@ function App() {
         <Route exact path="/" element={<Home/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/article" element={<ListArticle/>} />
+        <Route path="/article/category/:slug" element={<ListArticleCategory/>} />
         <Route path="/news" element={<ListNews/>} />
-        {/* <Route path="/news/:category" element={<ListNewsCategory/>} /> */}
+        <Route path="/news/category/:slug" element={<ListNewsCategory/>} />
         <Route path="/profil-instansi" element={<ProfilInstansi/>}/>
         <Route path="/video-gallery" element={<Video/>}/> 
         <Route path="/image-gallery" element={<Photo/>}/>

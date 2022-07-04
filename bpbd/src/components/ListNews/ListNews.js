@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 
 function ListNews(){
+
   //http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc
   const [Items, setItems] = useState([]);
   const [NewsData, setNewsData] = useState([]);
@@ -32,7 +33,7 @@ function ListNews(){
           console.log(error);
         });
     }, []);
-
+    console.log(NewsData)
   return(
     <div>
       <div>

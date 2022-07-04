@@ -2,17 +2,20 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
-import './ListArticle.css';
 import { Pagination } from 'react-bootstrap';
 import { Spinner } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
-function ListArticle() {
+function ListArticleCategory() {
+  const { slug } = useParams();
+  
   const [Items, setItems] = useState([]);
   const [ArticleData, setArticleData] = useState([]);
   useEffect(() => {
-      axios
-        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=31")
+    setArticleData(null); 
+    axios
+        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=31&slug=" + slug)
         .then(function (article) {
           setArticleData(article.data.data.data);
           console.log("console header: " + article.data.data.data);
@@ -29,7 +32,10 @@ function ListArticle() {
         .catch(function (error) {
           console.log(error);
         });
-    }, []);
+      return () => {
+        setArticleData(null);
+      }
+    }, [slug]);
 
   return (
     <div>
@@ -44,7 +50,7 @@ function ListArticle() {
               { ArticleData!=null ? 
                 ArticleData.map(item => 
                 <Link to={{ 
-                  pathname:'/article/' + item.id
+                  pathname:'/article/category/' + item.id
                  }} className="detailNews">
                   <div>
                     <img
@@ -85,4 +91,4 @@ function ListArticle() {
   );
 }
 
-export default ListArticle;
+export default ListArticleCategory;

@@ -35,7 +35,7 @@ function CategoryNews() {
         <p className="categoryName">Kategori Berita</p>
          {CategoryNewsData.map(item => 
           <Link to={{ 
-            pathname:'/news/' + item.nama_kategori
+            pathname:'/news/category/' + item.slug
            }}>
             <p className="textCategory ">{item.nama_kategori}</p>
             <hr className="the-line"></hr> 

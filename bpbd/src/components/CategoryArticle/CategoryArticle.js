@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import './CategoryArticle.css'
+import './CategoryArticle.css';
 import { Spinner } from '@chakra-ui/react';
+import { Link } from "react-router-dom";
 
 function CategoryArticle() {
   const [loading, setloading] = useState(false);
@@ -33,10 +34,12 @@ function CategoryArticle() {
       <div className="box-category">
         <p className="categoryName">Kategori Artikel</p>
         {CategoryArticleData.map(item => 
-            <>
+            <Link to={{ 
+            pathname:'/article/category/' + item.slug
+           }}>
               <p className="textCategory ">{item.nama_kategori}</p>
               <hr className="the-line"></hr>   
-            </>            
+            </Link>            
           )
           
           }

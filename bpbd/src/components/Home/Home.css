@@ -159,6 +159,8 @@
 }
 .subMenuName:hover{
   color: #075098;
+  text-decoration: underline;
+  transform: translateY(-10px);
 }
 .the-photo2:hover, .the-yutub:hover{
   transform: translateY(-10px);

@@ -6,6 +6,7 @@ import { Spinner } from '@chakra-ui/react';
 import './Carousel.css';
 
 function TheCarousel() {
+  const [loading, setloading] = useState(false);
   //Mencari data berita menggunakan id instansi
   const [CarouselData, setCarouselData] = useState([]);
   useEffect(() => {
@@ -20,6 +21,7 @@ function TheCarousel() {
           }
           setCarouselData(temp);
           console.log("console header: " + thecarousel.data.data.data);
+          setloading(false);
         })
         .catch(function (error) {
           console.log(error);
@@ -29,7 +31,13 @@ function TheCarousel() {
   return (
     <>
       <Carousel>
-        { CarouselData !=null ? 
+        { loading ? 
+          (
+            <div className="loading">
+              <Spinner size='lg' color="#075098" />
+              <p>Loading</p>
+            </div>
+          ) :
            CarouselData.map(item => 
             <Carousel.Item className='theCarousel'>
               <Link to={{ 
@@ -46,11 +54,6 @@ function TheCarousel() {
               </Carousel.Caption>
             </Carousel.Item>
             )
-         : 
-          <>
-            <Spinner size='xl' />
-            <p>Loading</p>
-          </>
           }
       </Carousel>
     </>

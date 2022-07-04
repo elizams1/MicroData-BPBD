@@ -25,10 +25,10 @@ function Home() {
         .then(function (home) {
           setHomeData(home.data.data);
           console.log("console header: " + home.data.data);
+          setloading(false);
         })
         .catch(function (error) {
-          console.log(error);
-          setloading(false);
+          console.log(error);        
         });
       axios
         .get("http://adminmesuji.embuncode.com/api/image-gallery?instansi_id=15&per_page=3")
@@ -174,12 +174,11 @@ function Home() {
               </Link>
               <div className='theGallery'>
               { loading ?
-              (
                 <div className="loading">
                   <Spinner size='lg' color="#075098" />
                   <p>Loading</p>
                 </div>
-              ) :
+               :
                 PhotoData.map(item => 
                   <div className="the-photo2">
                     <img

@@ -8,13 +8,14 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 
 function ListNewsCategory(){
-  const { category } = useParams();
+  const { slug } = useParams();
   //http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc
   const [Items, setItems] = useState([]);
   const [NewsData, setNewsData] = useState([]);
   useEffect(() => {
+      setNewsData(null)
       axios
-        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&slug=kegiatan")
+        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&slug=" + slug)
         .then(function (news) {
           setNewsData(news.data.data.data);
           console.log("console header: " + news.data.data.data);
@@ -31,9 +32,11 @@ function ListNewsCategory(){
         .catch(function (error) {
           console.log(error);
         });
-    }, []);
-  console.log(category);
-  console.log(NewsData);
+      return () => {
+        setNewsData(null)
+      }
+    }, [slug]);
+    
   return(
     <div>
       <div>
@@ -46,7 +49,7 @@ function ListNewsCategory(){
               { NewsData!=null ?
                 NewsData.map(item => 
                 <Link to={{ 
-                  pathname:'/news/' + item.id
+                  pathname:'/news/category/' + item.id
                  }} className="detailNews">
                   <div >
                     <img
