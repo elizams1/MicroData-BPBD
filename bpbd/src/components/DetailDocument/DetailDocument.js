@@ -3,16 +3,17 @@ import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import { useParams } from "react-router";
+import { Spinner } from '@chakra-ui/react';
 import './DetailDocument.css';
 
 function DetailDocument() {
-  const {id} = useParams()
+  const {slug} = useParams()
 
   const [DetailDoc, setDetailDoc]=useState([]);
 
   useEffect(() => {
     axios
-      .get("http://adminmesuji.embuncode.com/api/dokumen/" + id)
+      .get("http://adminmesuji.embuncode.com/api/dokumen/" + slug)
       .then(function (doc) {
         setDetailDoc(doc.data.data[0]);
         console.log("console header: " + doc.data.data[0]);
@@ -20,7 +21,7 @@ function DetailDocument() {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [slug]);
   console.log(DetailDoc);
 
   return(
@@ -36,7 +37,11 @@ function DetailDocument() {
               width="100%" 
               frameBorder="0" 
               scrolling="auto"></iframe>
-              </div> : <p>loading</p>
+              </div> : 
+              <>
+                <Spinner size='xl' />
+                <p>Loading</p>
+              </>
             }
           </div>
           <div className="right-view-detailDoc">

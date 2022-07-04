@@ -2,19 +2,19 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
-import './ListNews.css';
 import { Pagination } from 'react-bootstrap';
 import { Spinner } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 
-function ListNews(){
+function ListNewsCategory(){
+  const { category } = useParams();
   //http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc
   const [Items, setItems] = useState([]);
   const [NewsData, setNewsData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31")
+        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&slug=kegiatan")
         .then(function (news) {
           setNewsData(news.data.data.data);
           console.log("console header: " + news.data.data.data);
@@ -32,7 +32,8 @@ function ListNews(){
           console.log(error);
         });
     }, []);
-
+  console.log(category);
+  console.log(NewsData);
   return(
     <div>
       <div>
@@ -43,7 +44,7 @@ function ListNews(){
           <div className="left-view-list-news">
             <div className='the-news'>
               { NewsData!=null ?
-                NewsData.map(item =>
+                NewsData.map(item => 
                 <Link to={{ 
                   pathname:'/news/' + item.id
                  }} className="detailNews">
@@ -84,4 +85,4 @@ function ListNews(){
     </div>
   );
 }
-export default ListNews;
+export default ListNewsCategory;

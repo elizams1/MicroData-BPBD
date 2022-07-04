@@ -56,11 +56,10 @@ function Photo(){
         </div>
       </div>
       :
-      
-        <p>loading</p>
-        
-      
-
+      <>
+        <Spinner size='xl' />
+        <p>Loading</p>
+      </>
     }
       
     </>

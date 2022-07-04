@@ -4,6 +4,8 @@ import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './Document.css';
 import {BsFillFileEarmarkArrowDownFill} from 'react-icons/bs';
+import { Link } from "react-router-dom";
+import { Spinner } from '@chakra-ui/react';
 
 function Document(){
 
@@ -27,16 +29,25 @@ function Document(){
           <div className="left-view-document">
             <p className="document-title">DOKUMEN</p>
             <div className="the-document">
-              {
+              { DocumentData!=null ?
                 DocumentData.map(item=>
-                  <div className="the-sub-document">
-                    <p className="document-name">{item.name}</p>
-                    <div className="document-file ">
-                      <BsFillFileEarmarkArrowDownFill size={15} color="#075098" className="icons"/>
-                      <p className="document-file-name">{item.dokumen_item[0].dokumen_file_name}</p>
+                  <Link to={{ 
+                  pathname:'/document/' + item.slug
+                 }}>
+                    <div className="the-sub-document">
+                      <p className="document-name">{item.name}</p>
+                      <div className="document-file ">
+                        <BsFillFileEarmarkArrowDownFill size={15} color="#075098" className="icons"/>
+                        <p className="document-file-name">{item.dokumen_item[0].dokumen_file_name}</p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 )
+                : 
+                <>
+                  <Spinner size='xl' />
+                  <p>Loading</p>
+                </>
               }
             </div>
           </div>

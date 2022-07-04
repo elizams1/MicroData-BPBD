@@ -3,7 +3,9 @@ import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './ListArticle.css';
-import { Pagination } from 'react-bootstrap'
+import { Pagination } from 'react-bootstrap';
+import { Spinner } from '@chakra-ui/react';
+import { Link } from "react-router-dom";
 
 function ListArticle() {
   const [Items, setItems] = useState([]);
@@ -38,20 +40,32 @@ function ListArticle() {
         
         <div className="split-view-list-article">
           <div className="left-view-list-article">
-            <div className='theNews'>
-              {ArticleData.map(item => 
-                <div className="detailNews">
-                  <img
-                    className="thePicture"
-                    src={item.image_file_data}
-                    alt="First slide"
-                  />
-                  <div className="detail">
-                    <p className="textDetails">{item.title}</p>
-                    <p className="textIntro">{item.intro}</p>
+            <div className='the-article'>
+              { ArticleData!=null ? 
+                ArticleData.map(item => 
+                <Link to={{ 
+                  pathname:'/article/' + item.id
+                 }} className="detailNews">
+                  <div>
+                    <img
+                      className="thePicture"
+                      src={item.image_file_data}
+                      alt="First slide"
+                    />
+                    <div className="detail">
+                      <p className="textDetails">{item.title}</p>
+                      <p className="textIntro">{item.intro}</p>
+                    </div>
                   </div>
-                </div>                
-              )}
+                </Link>
+                                
+              )
+              :
+                <>
+                  <Spinner size='xl' />
+                  <p>Loading</p>
+                </>
+              }
             </div>
             <div className="pagination">
               <Pagination>{Items}</Pagination>

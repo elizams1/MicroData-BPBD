@@ -141,7 +141,7 @@
 .split-view-home{
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 30px;
   width: 80%;
   margin-top: 25px;
 }
@@ -149,7 +149,7 @@
   width: 75%;
 }
 .right-view {
-  width: 22%;
+  width: 25%;
 }
 .subMenuName{
   font-size: 24px;
@@ -269,4 +269,10 @@
   font-weight: 600;
   text-transform: capitalize;
   padding: 10px;
+}
+.loading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

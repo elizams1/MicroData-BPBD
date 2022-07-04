@@ -23,7 +23,7 @@
   justify-content: center;
   width: 80%;
   margin-top: 25px;
-  gap: 50px;
+  gap: 30px;
   align-items: flex-start;
 }
 .left-view-document {
@@ -31,6 +31,9 @@
   justify-content: center;
   width: 75%;
   flex-direction: column;
+}
+.right-view-document {
+  width: 25%;
 }
 .document-title {
   font-size: 28px;

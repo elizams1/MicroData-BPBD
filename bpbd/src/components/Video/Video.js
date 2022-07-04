@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
+import { Spinner } from '@chakra-ui/react';
 import './Video.css';
 
 function Video(){
@@ -26,7 +27,7 @@ function Video(){
           <div className="left-view-video">
             <p className="video-title">GALERI VIDEO</p>
             <div className="the-gallery">
-            {
+            { VideoData!=null ?
               VideoData.map(item =>
               <div className="the-sub-gallery">
                 {
@@ -38,7 +39,12 @@ function Video(){
                   )
                 }
               </div>
-              )
+              ) 
+             :
+            <>
+              <Spinner size='xl' />
+              <p>Loading</p>
+            </> 
             } 
             </div>
           </div>

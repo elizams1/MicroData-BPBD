@@ -5,6 +5,11 @@
   }
   .left-view-list-article {
     margin-bottom: 25px;
+    width: 100% !important;
+  }
+  .thePicture {
+    height: 250px !important;
+    ;
   }
 }
 .articleTitle{
@@ -20,9 +25,18 @@
 .split-view-list-article {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 30px;
   width: 80%;
   margin-top: 25px;
+}
+.left-view-list-article{
+  width: 75%;
+}
+.the-article{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 .pagination{
   display: flex;

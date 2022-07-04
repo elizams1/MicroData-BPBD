@@ -3,6 +3,7 @@ import axios from 'axios';
 import CategoryNews from '../CategoryNews/CategoryNews.js';
 import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import { useParams } from "react-router";
+import { Spinner } from '@chakra-ui/react';
 import './DetailArticle.css';
 
 function DetailArticle(){
@@ -26,17 +27,25 @@ function DetailArticle(){
       <div className="detailArtikel">
         <div className="split-view-detail">
           <div className="left-view-detail">
-            <div>
-              <p className="detail-article-title">{ArticleDetail.title}</p>
-              <img 
-              class="thePicture" 
-              src={ArticleDetail.image_file_data}
-              alt="ArticlePhoto"/>
-              <div dangerouslySetInnerHTML={{
-                __html: ArticleDetail.content,
-                }} className="detail-content"
-              />
-            </div>
+            { ArticleDetail!=null ?
+              <div>
+                <p className="detail-article-title">{ArticleDetail.title}</p>
+                <img 
+                class="thePicture" 
+                src={ArticleDetail.image_file_data}
+                alt="ArticlePhoto"/>
+                <div dangerouslySetInnerHTML={{
+                  __html: ArticleDetail.content,
+                  }} className="detail-content"
+                />
+              </div>
+              :
+              <div className="loading">
+                <Spinner size='lg' color="#075098" />
+                <p>Loading</p>
+              </div>
+            }
+            
           </div>
           <div className="rightView">
             <div className="categoryNews">
