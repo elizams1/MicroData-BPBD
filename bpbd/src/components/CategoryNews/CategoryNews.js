@@ -23,28 +23,7 @@ function CategoryNews() {
     }, []);
     
   return(
-    <>
-    { loading ?
-    (
-      <div className="loading">
-        <Spinner size='lg' color="#075098" />
-        <p>Loading</p>
-      </div>
-    ) :
-      <div className="box-category">
-        <p className="categoryName">Kategori Berita</p>
-         {CategoryNewsData.map(item => 
-          <Link to={{ 
-            pathname:'/news/category/' + item.slug
-           }}>
-            <p className="textCategory ">{item.nama_kategori}</p>
-            <hr className="the-line"></hr> 
-          </Link> 
-        ) 
-        }
-      </div>
-    }
-    </>
+    <></>
   );
   
 } 

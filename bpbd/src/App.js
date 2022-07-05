@@ -27,9 +27,9 @@ function App() {
         <Route exact path="/" element={<Home/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/article" element={<ListArticle/>} />
-        <Route path="/article/category/:slug" element={<ListArticleCategory/>} />
+        {/* <Route path="/article/category/:slug" element={<ListArticleCategory/>} /> */}
         <Route path="/news" element={<ListNews/>} />
-        <Route path="/news/category/:slug" element={<ListNewsCategory/>} />
+        {/* <Route path="/news/category/:slug" element={<ListNewsCategory/>} /> */}
         <Route path="/profil-instansi" element={<ProfilInstansi/>}/>
         <Route path="/video-gallery" element={<Video/>}/> 
         <Route path="/image-gallery" element={<Photo/>}/>
