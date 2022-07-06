@@ -13,15 +13,14 @@ import {
 import { Link } from "react-router-dom";
 import {BsFillCaretDownFill, BsSearch} from 'react-icons/bs';
 
-
 function ListNews(){
 
   const [Items, setItems] = useState([]);
+  const [NewsList, setNewsList] = useState([]);
   const [CategoryNewsData, setCategoryNewsData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
-  const [NewsList, setNewsList] = useState([]);
   const [loading, setloading] = useState(false);
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('');
 
   useEffect(() => {
       setloading(true);
@@ -84,8 +83,6 @@ function ListNews(){
       });
     
   }
-    console.log(CategoryNewsData);
-    console.log(selectedCategory);
   
   function handleSearch(event) {
    setValue(event.target.value);
@@ -107,41 +104,37 @@ function ListNews(){
           ) :
           <>
             <Menu>
-              {({isOpen}) =>(
-                <>
-                  <MenuButton 
-                    px={2}
-                    py={2}
-                    transition='all 0.2s'
-                    color='white'
-                    fontSize="xl"
-                    backgroundColor='#075098'
-                    borderRadius='10px'
-                    _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
-                    _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}  
-                    as={Button}
-                    rightIcon={<BsFillCaretDownFill />}>
-                    {selectedCategory!=null ? selectedCategory : 'Kategori Berita'}
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem fontSize="xl"
-                      color='#075098'
-                      _hover={{ bg: 'aliceblue', color:'#075098' }}
-                      onClick={()=> setSelectedCategory(null)}>
-                      Kategori Berita
-                    </MenuItem>
-                  {CategoryNewsData.map(item => 
-                    <MenuItem
-                    fontSize="xl"
-                    color='#075098'
-                    _hover={{ bg: 'aliceblue', color:'#075098' }}
-                    onClick={() => setSelectedCategory(item.nama_kategori) }>
-                    {item.nama_kategori}
-                    </MenuItem>                   
-                  )}
-                  </MenuList>
-                </>
+              <MenuButton 
+                px={2}
+                py={2}
+                transition='all 0.2s'
+                color='white'
+                fontSize="xl"
+                backgroundColor='#075098'
+                borderRadius='10px'
+                _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
+                _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}  
+                as={Button}
+                rightIcon={<BsFillCaretDownFill />}>
+                {selectedCategory!=null ? selectedCategory : 'Kategori Berita'}
+              </MenuButton>
+              <MenuList>
+                <MenuItem fontSize="xl"
+                  color='#075098'
+                  _hover={{ bg: 'aliceblue', color:'#075098' }}
+                  onClick={()=> setSelectedCategory(null)}>
+                  Kategori Berita
+                </MenuItem>
+              {CategoryNewsData.map(item => 
+                <MenuItem
+                fontSize="xl"
+                color='#075098'
+                _hover={{ bg: 'aliceblue', color:'#075098' }}
+                onClick={() => setSelectedCategory(item.nama_kategori) }>
+                {item.nama_kategori}
+                </MenuItem>                   
               )}
+              </MenuList>
             </Menu>
           </>
           }
@@ -159,7 +152,6 @@ function ListNews(){
               <p>Loading</p>
             </div>
             :(
-
             <>
             {NewsList != null ?
                 NewsList.map(item =>
