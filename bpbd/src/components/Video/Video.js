@@ -4,50 +4,52 @@ import { Spinner } from '@chakra-ui/react';
 import './Video.css';
 
 function Video(){
-  
+  const [loading, setloading] = useState(false);
   const [VideoData, setVideoData] = useState([]);
   useEffect(() => {
+      setloading(true);
       axios
         .get("http://adminmesuji.embuncode.com/api/video-gallery?instansi_id=31")
         .then(function (video) {
-          setVideoData(video.data.data.data);
+          let theVideo = [];
+          for (let i = 0; i < video.data.data.data.length; i++) {
+            for (let j = 0; j < video.data.data.data[i].image_gallery_item.length; j++){
+              theVideo.push(video.data.data.data[i].image_gallery_item[j])
+            }
+          }
+          setVideoData(theVideo);
           console.log("console header: " + video.data.data.data);
+          setloading(false);
         })
         .catch(function (error) {
           console.log(error);
         });
     }, []);
 
+  console.log(VideoData);
   return( 
     <>
       <div className="video-page">
-        <div className="split-view-video">
-          <div className="left-view-video">
-            <p className="video-title">GALERI VIDEO</p>
-            <div className="the-gallery">
-            { VideoData!=null ?
-              VideoData.map(item =>
-              <div className="the-sub-gallery">
-                {
-                  item.image_gallery_item.map(items =>
-                    <div className="the-photo">
-                      <iframe src={'https://www.youtube.com/embed/'+items.video_url} alt="thevideo" className="the-img" allowFullScreen/>
-                      <p className="the-desc">{items.description}</p>
-                    </div>
-                  )
-                }
+        <div className="video-list">
+          <p className="video-title">GALERI VIDEO</p>
+          <div className="the-gallery-video">
+          { loading ?
+          <>
+            <Spinner size='xl' />
+            <p>Loading</p>
+          </>
+          :
+          <>
+            { VideoData.map(item =>
+            <div className="the-sub-gallery-video">
+              <div className="the-video-loc">
+                <iframe src={'https://www.youtube.com/embed/'+item.video_url} alt="thevideo" className="the-img" allowFullScreen/>
+                <p className="the-desc">{item.description}</p>
               </div>
-              ) 
-             :
-            <>
-              <Spinner size='xl' />
-              <p>Loading</p>
-            </> 
-            } 
             </div>
-          </div>
-          <div className="right-view-video">
-            
+            )} 
+          </> 
+          } 
           </div>
         </div>
       </div>

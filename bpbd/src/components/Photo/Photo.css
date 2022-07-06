@@ -1,42 +1,12 @@
-@media screen and (max-width: 1400px) {
-  .split-view-photo {
-    flex-direction: column !important;
-  }
-
-  .left-view-photo {
-    width: 100% !important;
-  }
-  .right-view-photo {
-    display: flex;
-    width: 100% !important;
-    justify-content: center;
-    margin-top: 25px;
-    gap: 20px;
-  }
-}
 .photo-page {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
 }
-
-.split-view-photo {
+.photo-list{
   display: flex;
-  justify-content: center;
-  width: 80%;
-  margin-top: 25px;
-  gap: 30px;
-  align-items: flex-start;
-}
-
-.left-view-photo {
-  display: flex;
-  justify-content: center;
-  width: 75%;
   flex-direction: column;
-}
-.right-view-photo{
-  width: 25%;
+  width: 80%;
 }
 .photo-title {
   font-size: 28px;
