@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
 import { useParams } from "react-router";
 import './DetailNews.css';
 
@@ -38,12 +37,7 @@ function DetailNews() {
             </div>
           </div>
           <div className="rightView">
-            {/* <div className="categoryNews">
-              <CategoryNews/>
-            </div>
-            <div className="categoryArticle">
-              <CategoryArticle/>
-            </div> */}
+            
           </div> 
         </div>
       </div>

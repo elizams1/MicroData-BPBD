@@ -13,8 +13,8 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-} from '@chakra-ui/react'
-import { useDisclosure } from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 
 function TheMenu(){
@@ -47,7 +47,7 @@ function TheMenu(){
     }, []);
 
   // membuat drawer
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef()
   
 

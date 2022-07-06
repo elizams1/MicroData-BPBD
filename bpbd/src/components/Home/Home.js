@@ -3,8 +3,6 @@ import axios from 'axios';
 import './Home.css';
 import { BsEnvelope, BsGeo } from "react-icons/bs";
 import Carousel from '../Carousel/Carousel.js';
-import CategoryNews from '../CategoryNews/CategoryNews.js';
-import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import { Spinner } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 
@@ -167,123 +165,113 @@ function Home() {
           }
         </div>
         <div className="split-view-home">
-          <div className="left-view">
-            <div className="galleryFoto">
-              <Link to="/image-gallery">
-                <p  className="subMenuName">Galeri Foto</p>
-              </Link>
-              <div className='theGallery'>
-              { loading ?
-                <div className="loading">
-                  <Spinner size='lg' color="#075098" />
-                  <p>Loading</p>
-                </div>
-               :
-                PhotoData.map(item => 
-                  <div className="the-photo2">
-                    <img
-                      className="the-picture"
-                      src={item.image_file_data}
-                      alt="First slide"
-                    />
-                    <p className="the-description-image">
-                      {item.description}
-                    </p>
-                  </div> 
-              )
-              }
+          <div className="galleryFoto">
+            <Link to="/image-gallery">
+              <p  className="subMenuName">Galeri Foto</p>
+            </Link>
+            <div className='theGallery'>
+            { loading ?
+              <div className="loading">
+                <Spinner size='lg' color="#075098" />
+                <p>Loading</p>
               </div>
-            </div>
-            <div className="galleryVideo">
-              <Link to="/video-gallery">
-                <p  className="subMenuName">Galeri Video</p>
-              </Link>
-              <div className="the-vidio">
-              { loading ?
-                <div className="loading">
-                  <Spinner size='lg' color="#075098" />
-                  <p>Loading</p>
+              :
+              PhotoData.map(item => 
+                <div className="the-photo2">
+                  <img
+                    className="the-picture"
+                    src={item.image_file_data}
+                    alt="First slide"
+                  />
+                  <p className="the-description-image">
+                    {item.description}
+                  </p>
                 </div> 
-                :
-                VideoData.map(item => 
-                  <div className="the-yutub">
-                    <iframe
-                      className="the-vidio2"
-                      src={'https://www.youtube.com/embed/'+item.video_url} 
-                      alt="First slide"
-                      allowFullScreen
-                    />
-                    <p className="text-description-video">
-                      {item.description}
-                    </p>
-                  </div>
-              )
-              }
-              </div>
+            )
+            }
             </div>
-            <div className="news">
-              <Link to="/news">
-                <p className="subMenuName">Berita</p>
-              </Link>
-              <div className='theNews'>
-                {loading ? 
-                <div className="loading">
-                  <Spinner size='lg' color="#075098" />
-                  <p>Loading</p>
-                </div> :
-                NewsData.map(item => 
-                  <Link to={{ pathname: '/news/' + item.id }} className="the-detail-news-home">
-                    <div className="the-detail-news-home-2">
-                        <img
-                          className="the-picture2"
-                          src={item.image_file_data}
-                          alt="the-detail-news"
-                        />
-                        <div>
-                          <p className="textDetails3">{item.title}</p>
-                          <p className="textIntro3">{item.intro}</p>
-                        </div>
-                    </div>
-                  </Link>            
-                )
-                }
-              </div>
+          </div>
+          <div className="galleryVideo">
+            <Link to="/video-gallery">
+              <p  className="subMenuName">Galeri Video</p>
+            </Link>
+            <div className="the-vidio">
+            { loading ?
+              <div className="loading">
+                <Spinner size='lg' color="#075098" />
+                <p>Loading</p>
+              </div> 
+              :
+              VideoData.map(item => 
+                <div className="the-yutub">
+                  <iframe
+                    className="the-vidio2"
+                    src={'https://www.youtube.com/embed/'+item.video_url} 
+                    alt="First slide"
+                    allowFullScreen
+                  />
+                  <p className="text-description-video">
+                    {item.description}
+                  </p>
+                </div>
+            )
+            }
             </div>
-            <div className="article">
-              <Link to="/article">
-                <p className="subMenuName">Artikel</p>
-              </Link>
-              <div className='theArticle'>
-                { loading ?
-                <div className="loading">
-                  <Spinner size='lg' color="#075098" />
-                  <p>Loading</p>
-                </div>  :
-                  ArticleData.map(item => 
-                  <Link to={{ pathname:'/article/' + item.id}} className="the-detail-article">
-                    <div className="the-detail-article-2" >
-                      <div>
-                        <p className="textDetails2">{item.title}</p>
-                        <p className="textIntro2">{item.intro}</p>
-                      </div>
+          </div>
+          <div className="news">
+            <Link to="/news">
+              <p className="subMenuName">Berita</p>
+            </Link>
+            <div className='theNews'>
+              {loading ? 
+              <div className="loading">
+                <Spinner size='lg' color="#075098" />
+                <p>Loading</p>
+              </div> :
+              NewsData.map(item => 
+                <Link to={{ pathname: '/news/' + item.id }} className="the-detail-news-home">
+                  <div className="the-detail-news-home-2">
                       <img
                         className="the-picture2"
                         src={item.image_file_data}
-                        alt="the-detail-article"
+                        alt="the-detail-news"
                       />
-                    </div>
-                  </Link>               
-                )
-                }
-              </div>
+                      <div>
+                        <p className="textDetails3">{item.title}</p>
+                        <p className="textIntro3">{item.intro}</p>
+                      </div>
+                  </div>
+                </Link>            
+              )
+              }
             </div>
           </div>
-          <div className="right-view">
-            <div className="categoryNews">
-              <CategoryNews/>
-            </div>
-            <div className="categoryArticle">
-              <CategoryArticle/>
+          <div className="article">
+            <Link to="/article">
+              <p className="subMenuName">Artikel</p>
+            </Link>
+            <div className='theArticle'>
+              { loading ?
+              <div className="loading">
+                <Spinner size='lg' color="#075098" />
+                <p>Loading</p>
+              </div>  :
+                ArticleData.map(item => 
+                <Link to={{ pathname:'/article/' + item.id}} className="the-detail-article">
+                  <div className="the-detail-article-2" >
+                    <div>
+                      <p className="textDetails2">{item.title}</p>
+                      <p className="textIntro2">{item.intro}</p>
+                    </div>
+                    <img
+                      className="the-picture2"
+                      src={item.image_file_data}
+                      alt="the-detail-article"
+                    />
+                  </div>
+                </Link>               
+              )
+              }
             </div>
           </div>
         </div>

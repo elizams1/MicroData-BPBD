@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CategoryNews from '../CategoryNews/CategoryNews.js';
-import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './Photo.css';
 import { Spinner } from '@chakra-ui/react';
 
@@ -46,12 +44,7 @@ function Photo(){
             </div>
           </div>
           <div className="right-view-photo">
-            <div className="categoryNews">
-              <CategoryNews/>
-            </div>
-            <div className="categoryArticle">
-              <CategoryArticle/>
-            </div>
+            
           </div>
         </div>
       </div>

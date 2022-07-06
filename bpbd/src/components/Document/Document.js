@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CategoryNews from '../CategoryNews/CategoryNews.js';
-import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './Document.css';
 import {BsFillFileEarmarkArrowDownFill} from 'react-icons/bs';
 import { Link } from "react-router-dom";
@@ -52,12 +50,7 @@ function Document(){
             </div>
           </div>
           <div className="right-view-document">
-            <div className="categoryNews">
-              <CategoryNews/>
-            </div>
-            <div className="categoryArticle">
-              <CategoryArticle/>
-            </div>
+           
           </div>
         </div>
       </div>

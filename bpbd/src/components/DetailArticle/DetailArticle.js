@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CategoryNews from '../CategoryNews/CategoryNews.js';
-import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import { useParams } from "react-router";
 import { Spinner } from '@chakra-ui/react';
 import './DetailArticle.css';
@@ -48,12 +46,7 @@ function DetailArticle(){
             
           </div>
           <div className="rightView">
-            <div className="categoryNews">
-              <CategoryNews/>
-            </div>
-            <div className="categoryArticle">
-              <CategoryArticle/>
-            </div>
+            
           </div> 
         </div>
       </div>

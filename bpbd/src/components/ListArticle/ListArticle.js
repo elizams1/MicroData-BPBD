@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CategoryNews from '../CategoryNews/CategoryNews.js';
-import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './ListArticle.css';
 import { Pagination } from 'react-bootstrap';
 import { Spinner } from '@chakra-ui/react';
@@ -71,12 +69,7 @@ function ListArticle() {
             </div>
           </div>
           <div className="rightView">
-            <div className="categoryNews">
-              <CategoryNews/>
-            </div>
-            <div className="categoryArticle">
-              <CategoryArticle/>
-            </div>
+           
           </div>
         </div>
       </div>

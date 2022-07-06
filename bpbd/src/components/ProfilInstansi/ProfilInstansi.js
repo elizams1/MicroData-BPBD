@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CategoryNews from '../CategoryNews/CategoryNews.js';
-import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './ProfileInstansi.css';
 
 function ProfilInstansi() {
@@ -51,12 +49,7 @@ function ProfilInstansi() {
             </div>
           </div>
           <div className="rightView">
-            <div className="categoryNews">
-              <CategoryNews/>
-            </div>
-            <div className="categoryArticle">
-              <CategoryArticle/>
-            </div>
+            
           </div> 
         </div>
       </div>

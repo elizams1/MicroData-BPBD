@@ -2,40 +2,30 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './ListNews.css';
 import { Pagination } from 'react-bootstrap';
-import { Spinner } from '@chakra-ui/react';
+import { 
+  Spinner, 
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem, 
+  Button,
+  Input } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
+import {BsFillCaretDownFill, BsSearch} from 'react-icons/bs';
 
 
 function ListNews(){
 
-  //http://adminmesuji.embuncode.com/api/news?instansi_id=15&sort_type=asc
   const [Items, setItems] = useState([]);
-  const [NewsData, setNewsData] = useState([]);
   const [CategoryNewsData, setCategoryNewsData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState();
+  const [NewsList, setNewsList] = useState([]);
   const [loading, setloading] = useState(false);
+  const [value, setValue] = useState('')
+
   useEffect(() => {
       setloading(true);
-      setNewsByCategory(null);
-      axios
-        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31")
-        .then(function (news) {
-          setNewsData(news.data.data.data);
-          console.log("console header: " + news.data.data.data);
-          setloading(false);
-          let items = []; 
-          for (let number = 1; number<=news.data.data.last_page; number++){
-            items.push(
-              <Pagination.Item key={number} active={number === news.data.data.current_page}>
-              {number}
-            </Pagination.Item>,
-            );
-            setItems(items);
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
+      getNewsList(1);
       axios
         .get("http://adminmesuji.embuncode.com/api/news/categories/31")
         .then(function (catNews) {
@@ -46,20 +36,43 @@ function ListNews(){
         .catch(function (error) {
           console.log(error);
         });
-    }, []);
+    }, [selectedCategory]);
 
-  const [NewsByCategory, setNewsByCategory] = useState([])
-  function getNewsByCategory(category) {
+  
+  function getNewsList(page, title) {
+    let urlPage = '';
+    if(page==null){
+      urlPage='&page=1';
+    }else{
+      urlPage='&page='+page;
+    }
+
+    let slug = '';
+    if(selectedCategory!=null){
+      slug='&slug='+selectedCategory;
+    }else{
+      slug='';
+    }
+
+    let urlTitle = '';
+    if(title!=null){
+      urlTitle="&title="+title;
+    }else{
+      urlTitle='';
+    }
+
+    setNewsList(null);
+    
     axios
-      .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&slug="+ category)
+      .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&per_page=4"  + slug + urlTitle + urlPage)
       .then(function (news) {
-        setNewsByCategory(news.data.data.data);
+        setNewsList(news.data.data.data);
         console.log("console header: " + news.data.data.data);
         setloading(false);
         let items = []; 
         for (let number = 1; number<=news.data.data.last_page; number++){
           items.push(
-            <Pagination.Item key={number} active={number === news.data.data.current_page}>
+            <Pagination.Item onClick={()=>getNewsList(number)} key={number} active={number === news.data.data.current_page}>
             {number}
           </Pagination.Item>,
           );
@@ -71,98 +84,118 @@ function ListNews(){
       });
     
   }
-    console.log(NewsData)
-    console.log(CategoryNewsData)
+    console.log(CategoryNewsData);
+    console.log(selectedCategory);
+  
+  function handleSearch(event) {
+   setValue(event.target.value);
+  }
+
   return(
-    <div>
-      <div>
+    <div  className="listNews">
+      <div className="top">
         <p className="newsTitle">BERITA</p>
       </div>
-      <div className="listNews">
-        <div className="split-view-list-news">
-          <div className="left-view-list-news">
-            <div className='the-news'>
-              { loading ?
-                <div className="loading">
-                  <Spinner size='lg' color="#075098" />
-                  <p>Loading</p>
-                </div>
-                :(
-
+      <div className="the-tools">
+        <div className="the-category">
+          { loading ?
+          (
+            <div className="loading">
+              <Spinner size='lg' color="#075098" />
+              <p>Loading</p>
+            </div>
+          ) :
+          <>
+            <Menu>
+              {({isOpen}) =>(
                 <>
-                {NewsData != null && NewsByCategory == null ?
-                    NewsData.map(item =>
-                    <Link to={{ 
-                      pathname:'/news/' + item.id
-                    }} className="detailNews">
-                      <div >
-                        <img
-                          className="thePicture"
-                          src={item.image_file_data}
-                          alt="First slide"
-                        />
-                        <div className="detail">
-                          <p className="textDetails">{item.title}</p>
-                          <p className="textIntro">{item.intro}</p>
-                        </div>
-                      </div>  
-                    </Link>               
-                  ) :
-                    NewsByCategory.map(item =>
-                    <Link to={{ 
-                      pathname:'/news/' + item.id
-                    }} className="detailNews">
-                      <div >
-                        <img
-                          className="thePicture"
-                          src={item.image_file_data}
-                          alt="First slide"
-                        />
-                        <div className="detail">
-                          <p className="textDetails">{item.title}</p>
-                          <p className="textIntro">{item.intro}</p>
-                        </div>
-                      </div>  
-                    </Link>               
-                  )
-                }
+                  <MenuButton 
+                    px={2}
+                    py={2}
+                    transition='all 0.2s'
+                    color='white'
+                    fontSize="xl"
+                    backgroundColor='#075098'
+                    borderRadius='10px'
+                    _hover={{ bg: 'white', borderRadius:'10px', color:'#075098' }}
+                    _expanded={{ bg: 'white', color:'#075098',  borderRadius:'10px' }}  
+                    as={Button}
+                    rightIcon={<BsFillCaretDownFill />}>
+                    {selectedCategory!=null ? selectedCategory : 'Kategori Berita'}
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem fontSize="xl"
+                      color='#075098'
+                      _hover={{ bg: 'aliceblue', color:'#075098' }}
+                      onClick={()=> setSelectedCategory(null)}>
+                      Kategori Berita
+                    </MenuItem>
+                  {CategoryNewsData.map(item => 
+                    <MenuItem
+                    fontSize="xl"
+                    color='#075098'
+                    _hover={{ bg: 'aliceblue', color:'#075098' }}
+                    onClick={() => setSelectedCategory(item.nama_kategori) }>
+                    {item.nama_kategori}
+                    </MenuItem>                   
+                  )}
+                  </MenuList>
                 </>
-                )
-              }
-              
+              )}
+            </Menu>
+          </>
+          }
+        </div>
+        <div className="the-search">
+          <Input fontSize="xl" placeholder="Cari Berita" value={value} onChange={handleSearch} />
+          <Button size='md' color='#075098' onClick={()=> getNewsList(null,value)}><BsSearch/></Button>
+        </div>
+      </div>
+      <div className="split-view-list-news">
+        <div className='the-news'>
+          { loading ?
+            <div className="loading">
+              <Spinner size='lg' color="#075098" />
+              <p>Loading</p>
             </div>
-            <div className="pagination">
-              <Pagination>{Items}</Pagination>
-            </div>
-          </div>
-          <div className="rightView">
-            <div className="categoryNews">
-              <>
-              { loading ?
+            :(
+
+            <>
+            {NewsList != null ?
+                NewsList.map(item =>
+                <Link to={{ 
+                  pathname:'/news/' + item.id
+                }} className="detailNews">
+                  <div >
+                    <img
+                      className="thePicture"
+                      src={item.image_file_data}
+                      alt="First slide"
+                    />
+                    <div className="detail">
+                      <p className="textDetails">{item.title}</p>
+                      <p className="textIntro">{item.intro}</p>
+                    </div>
+                  </div>  
+                </Link>               
+              ) :
               (
                 <div className="loading">
                   <Spinner size='lg' color="#075098" />
                   <p>Loading</p>
                 </div>
-              ) :
-                <div className="box-category">
-                  <p className="categoryName">Kategori Berita</p>
-                  {CategoryNewsData.map(item => 
-                    <button onClick={()=>{
-                    getNewsByCategory(item.slug) 
-                    setNewsData(null)}}>
-                      <p className="textCategory ">{item.nama_kategori}</p>
-                      <hr className="the-line"></hr> 
-                    </button> 
-                  ) 
-                  }
-                </div>
-              }
-              </>
-            </div>
-          </div>
+              )
+            }
+            </>
+            )
+          }
+          
+        </div>
+        <div className="pagination">
+          <Pagination>{Items}</Pagination>
         </div>
       </div>
+      
     </div>
   );
 }

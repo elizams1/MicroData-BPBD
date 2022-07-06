@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CategoryNews from '../CategoryNews/CategoryNews.js';
-import CategoryArticle from '../CategoryArticle/CategoryArticle.js';
 import './VisiMisi.css';
 
 function VisiMisi() {
@@ -30,12 +28,7 @@ function VisiMisi() {
             />
           </div>
           <div className="right-view-visiMisi">
-            <div className="categoryNews">
-              <CategoryNews/>
-            </div>
-            <div className="categoryArticle">
-              <CategoryArticle/>
-            </div>
+            
           </div>
         </div>
       </div>
