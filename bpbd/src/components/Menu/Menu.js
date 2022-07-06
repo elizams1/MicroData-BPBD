@@ -101,26 +101,20 @@ function TheMenu(){
                     </MenuButton>
                   </>
                   }
-                  
                   { item.children.length > 0 ? 
-                    
                     <MenuList>
                       {item.children.map(child =>
                       <Link to={""+child.url}>
-                        
                         <MenuItem 
                           fontSize="xl"
                           color='#075098'
                           _hover={{ bg: 'aliceblue', color:'#075098' }}
                         >{child.name}</MenuItem>
                       </Link>
-                        
                       )}
                     </MenuList>
                      : null
                   }
-                  
-                  
                 </>
               )}
             </Menu>        
@@ -152,37 +146,72 @@ function TheMenu(){
                       <Menu>
                         {({isOpen})=>(
                           <>
-                          <Link to={""+item.url}>
-                            <MenuButton 
-                              px={2}
-                              py={2}
-                              transition='all 0.2s'
-                              display='flex'
-                              marginBottom="10px"
-                              fontSize="xl"
-                              textTransform='uppercase'
-                              width= '100%'
-                              textAlign="center"
-                              _hover={{ bg: '#075098', borderRadius:'10px', color:'white' }}
-                              _expanded={{boxShadow: 'outline', borderRadius:'10px' }}
-                              // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
-                            isActive={isOpen}
-                            > 
-                              {isOpen ? item.name : item.name}
-                            </MenuButton>
-                            { item.children.length > 0 ? 
-                              <MenuList  
-                              >
-                                {item.children.map(child =>
-                                  <MenuItem 
-                                    color='#075098'
-                                    fontSize="xl"
-                                  >{child.name}</MenuItem>
-                                )}
-                              </MenuList> : null
-                            }
-                          </Link>
-                            
+                          {item.url !=null ?  
+                            <Link to={""+item.url}>
+                              <MenuButton 
+                                px={2}
+                                py={2}
+                                transition='all 0.2s'
+                                display='flex'
+                                marginBottom="10px"
+                                fontSize="xl"
+                                textTransform='uppercase'
+                                width= '100%'
+                                textAlign="center"
+                                _hover={{ bg: '#075098', borderRadius:'10px', color:'white' }}
+                                _expanded={{boxShadow: 'outline', borderRadius:'10px' }}
+                                // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
+                              isActive={isOpen}
+                              > 
+                                {isOpen ? item.name : item.name}
+                              </MenuButton>
+                              { item.children.length > 0 ? 
+                                <MenuList  
+                                >
+                                  {item.children.map(child =>
+                                    <MenuItem 
+                                      color='#075098'
+                                      fontSize="xl"
+                                    >{child.name}</MenuItem>
+                                  )}
+                                </MenuList> : null
+                              }
+                            </Link>
+                            : 
+                            <>
+                              <MenuButton 
+                                px={2}
+                                py={2}
+                                transition='all 0.2s'
+                                display='flex'
+                                marginBottom="10px"
+                                fontSize="xl"
+                                textTransform='uppercase'
+                                width= '100%'
+                                textAlign="center"
+                                _hover={{ bg: '#075098', borderRadius:'10px', color:'white' }}
+                                _expanded={{boxShadow: 'outline', borderRadius:'10px' }}
+                                // _focus={{ boxShadow: 'outline', borderRadius:'10px' }}
+                              isActive={isOpen}
+                              > 
+                                {isOpen ? item.name : item.name}
+                              </MenuButton>
+                            </>
+                          }
+                          { item.children.length > 0 ? 
+                            <MenuList>
+                              {item.children.map(child =>
+                              <Link to={""+child.url}>
+                                <MenuItem 
+                                  fontSize="xl"
+                                  color='#075098'
+                                  _hover={{ bg: 'aliceblue', color:'#075098' }}
+                                >{child.name}</MenuItem>
+                              </Link>
+                              )}
+                            </MenuList>
+                            : null
+                          }
                           </>
                         )}
                       </Menu>        

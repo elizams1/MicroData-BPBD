@@ -6,14 +6,16 @@ import { Link } from "react-router-dom";
 import { Spinner } from '@chakra-ui/react';
 
 function Document(){
-
+  const [loading, setloading] = useState(false);
   const [DocumentData, setDocumentData] = useState([]);
   useEffect(() => {
+    setloading(true);
     axios
       .get("http://adminmesuji.embuncode.com/api/dokumen?instansi_id=15")
       .then(function (doc) {
         setDocumentData(doc.data.data.data);
         console.log("console header: " + doc.data.data.data);
+        setloading(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -24,15 +26,20 @@ function Document(){
     <>
       <div className="document-page">
         <div className="split-view-document">
-          <div className="left-view-document">
-            <p className="document-title">DOKUMEN</p>
-            <div className="the-document">
-              { DocumentData!=null ?
-                DocumentData.map(item=>
-                  <Link to={{ 
+          <p className="document-title">DOKUMEN</p>
+          <div className="the-document">
+            { loading ?
+              <>
+                <Spinner size='xl' />
+                <p>Loading</p>
+              </>
+              :
+              <>
+                {DocumentData.map(item=>
+                  <Link className="the-sub-document" to={{ 
                   pathname:'/document/' + item.slug
-                 }}>
-                    <div className="the-sub-document">
+                  }}>
+                    <div >
                       <p className="document-name">{item.name}</p>
                       <div className="document-file ">
                         <BsFillFileEarmarkArrowDownFill size={15} color="#075098" className="icons"/>
@@ -40,17 +47,9 @@ function Document(){
                       </div>
                     </div>
                   </Link>
-                )
-                : 
-                <>
-                  <Spinner size='xl' />
-                  <p>Loading</p>
-                </>
-              }
-            </div>
-          </div>
-          <div className="right-view-document">
-           
+                )}
+              </>
+            }
           </div>
         </div>
       </div>

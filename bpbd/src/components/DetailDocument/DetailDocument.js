@@ -26,25 +26,22 @@ function DetailDocument() {
     <>
       <div className="detailDoc-page">
         <div className="split-view-detailDoc">
-          <div className="left-view-detailDoc">
-            <p className="detailDoc-title">{DetailDoc.nama_dokumen}</p>
-            {DetailDoc != null ? 
-              <div className="the-file-document">
-                <iframe src={"data:application/pdf;base64," + DetailDoc.dokumen_file_data} 
-              height="100%" 
-              width="100%" 
-              frameBorder="0" 
-              scrolling="auto"></iframe>
-              </div> : 
-              <>
-                <Spinner size='xl' />
-                <p>Loading</p>
-              </>
-            }
-          </div>
-          <div className="right-view-detailDoc">
-            
-          </div>
+          <p className="detailDoc-title">{DetailDoc.nama_dokumen}</p>
+          {DetailDoc != null ? 
+            <div className="the-file-document">
+              <iframe src={"data:application/pdf;base64," + DetailDoc.dokumen_file_data} 
+            height="100%" 
+            width="100%" 
+            frameBorder="0" 
+            scrolling="auto"
+            title="theDocument"
+            />
+            </div> : 
+            <>
+              <Spinner size='xl' />
+              <p>Loading</p>
+            </>
+          } 
         </div>
       </div>
     </>
