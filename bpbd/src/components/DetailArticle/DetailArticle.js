@@ -6,9 +6,24 @@ import './DetailArticle.css';
 
 function DetailArticle(){
   const {id} = useParams();
+  const [loading, setloading] = useState(false);
   //Mendapatkan detail article dari id artikel
   const [ArticleDetail, setArticleDetail] = useState([]);
-  
+
+  useEffect(() => {
+    getData();
+    setloading(true);
+    axios
+        .get("http://adminmesuji.embuncode.com/api/article/" + id)
+        .then(function (article) {
+          setArticleDetail(article.data.data);
+          console.log("console header: " + article.data.data);
+          setloading(false);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, []);
   //Fungsi untuk mendapatkan IP dan nama device
   const getData = async () => {
     const res = await axios.get('https://geolocation-db.com/json/')
@@ -54,25 +69,16 @@ function DetailArticle(){
       });
   }
 
-  useEffect(() => {
-    getData();
-    axios
-        .get("http://adminmesuji.embuncode.com/api/article/" + id)
-        .then(function (article) {
-          setArticleDetail(article.data.data);
-          console.log("console header: " + article.data.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }, []);
-
-    
   return(
     <>
       <div className="detailArtikel">
         <div className="split-view-detail">
-            { ArticleDetail!=null ?
+            {loading ?
+              <div className="loading">
+                <Spinner size='lg' color="#075098" />
+                <p>Loading</p>
+              </div>
+              :
               <div>
                 <p className="detail-article-title">{ArticleDetail.title}</p>
                 <img 
@@ -84,11 +90,7 @@ function DetailArticle(){
                   }} className="detail-content"
                 />
               </div>
-              :
-              <div className="loading">
-                <Spinner size='lg' color="#075098" />
-                <p>Loading</p>
-              </div>
+              
             }
         </div>
       </div>

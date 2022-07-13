@@ -123,8 +123,6 @@ function TheMenu(){
                           </Link>
                         }
                       </>
-                        
-                      
                       )}
                     </MenuList>
                      : null
@@ -215,13 +213,25 @@ function TheMenu(){
                           { item.children.length > 0 ? 
                             <MenuList>
                               {item.children.map(child =>
-                              <Link to={""+child.url}>
-                                <MenuItem 
-                                  fontSize="xl"
-                                  color='#075098'
-                                  _hover={{ bg: 'aliceblue', color:'#075098' }}
-                                >{child.name}</MenuItem>
-                              </Link>
+                              <>
+                                {child.static_page != null ? 
+                                  <Link to={"/static/"+child.static_page}>
+                                    <MenuItem 
+                                      fontSize="xl"
+                                      color='#075098'
+                                      _hover={{ bg: 'aliceblue', color:'#075098' }}
+                                    >{child.name}</MenuItem>
+                                  </Link>
+                                  : 
+                                  <Link to={""+child.url}>
+                                    <MenuItem 
+                                      fontSize="xl"
+                                      color='#075098'
+                                      _hover={{ bg: 'aliceblue', color:'#075098' }}
+                                    >{child.name}</MenuItem>
+                                  </Link>
+                                }cd
+                              </>
                               )}
                             </MenuList>
                             : null
