@@ -24,7 +24,6 @@ function DetailArticle(){
     <>
       <div className="detailArtikel">
         <div className="split-view-detail">
-          <div className="left-view-detail">
             { ArticleDetail!=null ?
               <div>
                 <p className="detail-article-title">{ArticleDetail.title}</p>
@@ -43,11 +42,6 @@ function DetailArticle(){
                 <p>Loading</p>
               </div>
             }
-            
-          </div>
-          <div className="rightView">
-            
-          </div> 
         </div>
       </div>
     </>

@@ -37,10 +37,10 @@ function DetailDocument() {
             title="theDocument"
             />
             </div> : 
-            <>
-              <Spinner size='xl' />
+            <div className="loading">
+              <Spinner size='lg' color="#075098" />
               <p>Loading</p>
-            </>
+            </div>
           } 
         </div>
       </div>
