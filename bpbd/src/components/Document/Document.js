@@ -29,10 +29,12 @@ function Document(){
           <p className="document-title">DOKUMEN</p>
           <div className="the-document">
             { loading ?
-              <>
-                <Spinner size='xl' />
-                <p>Loading</p>
-              </>
+              (
+                <div className="loading">
+                  <Spinner size='lg' color="#075098" />
+                  <p>Loading</p>
+                </div>
+              )
               :
               <>
                 {DocumentData.map(item=>

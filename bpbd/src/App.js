@@ -33,7 +33,7 @@ function App() {
         <Route path="/document/:slug" element={<DetailDocument/>}/>
         <Route path="/article/:id" element={<DetailArticle/>}/>
         <Route path="/news/:id" element={<DetailNews/>}/>
-        {/* <Route path="/" element={<VisiMisi/>}/> */}
+        <Route path="/static/:static_page" element={<VisiMisi/>}/>
       </Routes>
       <Footer/>
     </ChakraProvider>

@@ -1,20 +1,3 @@
-@media screen and (max-width: 1400px){
-  .split-view-visiMisi {
-    flex-direction: column !important;
-  }
-
-  .left-view-visiMisi {
-    width: 100% !important;
-  }
-
-  .right-view-visiMisi {
-    display: flex;
-    width: 100% !important;
-    justify-content: center;
-    margin-top: 25px;
-    gap: 20px;
-  }
-}
 .visiMisi-page{
   display: flex;
   justify-content: center;
@@ -22,17 +5,12 @@
 }
 .split-view-visiMisi{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 80%;
   margin-top: 25px;
-  gap: 50px;
-  align-items: flex-start;
-}
-.left-view-visiMisi{
-  display: flex;
-  justify-content: center;
-  width: 75%;
-  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
 .visiMisi-title{
   font-size: 28px;
