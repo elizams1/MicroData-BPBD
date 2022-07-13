@@ -1,11 +1,3 @@
-@media screen and (max-width: 1400px) {
-  .split-view-detail {
-    flex-direction: column;
-  }
-  .left-view-detail {
-    width: 100% !important;
-  }
-}
 .detail-news {
   display: flex;
   justify-content: center;
@@ -26,10 +18,4 @@
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 20px;
-}
-
-.left-view-detail {
-  display: flex;
-  justify-content: center;
-  width: 75%;
 }

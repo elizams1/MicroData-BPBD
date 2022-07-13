@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from "react-router";
+import { Spinner } from '@chakra-ui/react';
 import './DetailNews.css';
 
 function DetailNews() {
   const {id} = useParams()
+  const [loading, setloading] = useState(false);
   //Mendapatkan detail news dari id news
   const [NewsDetail, setNewsDetail] = useState([]);
   useEffect(() => {
@@ -13,6 +15,7 @@ function DetailNews() {
         .then(function (news) {
           setNewsDetail(news.data.data);
           console.log("console header: " + news.data.data);
+          setloading(false);
         })
         .catch(function (error) {
           console.log(error);
@@ -23,7 +26,13 @@ function DetailNews() {
     <>
       <div className="detail-news">
         <div className="split-view-detail">
-          <div className="left-view-detail">
+          {loading ?
+            (
+              <div className="loading">
+                <Spinner size='lg' color="#075098" />
+                <p>Loading</p>
+              </div>
+            ) :
             <div>
               <p className="detail-news-title">{NewsDetail.title}</p>
               <img 
@@ -35,10 +44,7 @@ function DetailNews() {
                 }} className="detail-content"
               />
             </div>
-          </div>
-          <div className="rightView">
-            
-          </div> 
+          }
         </div>
       </div>
     </>
