@@ -60,7 +60,7 @@ function ListArticle() {
     setArticleData(null);
 
     axios
-      .get("http://adminmesuji.embuncode.com/api/article?instansi_id=31&per_page=4"  + slug + urlTitle + urlPage)
+      .get("http://adminmesuji.embuncode.com/api/article?instansi_id=31&sort_type=desc&sort_by=created_at&per_page=4"  + slug + urlTitle + urlPage)
       .then(function (article) {
         setArticleData(article.data.data.data);
         console.log("console header: " + article.data.data.data);
@@ -161,10 +161,10 @@ function ListArticle() {
             </Link>             
           )
           :
-            <>
-              <Spinner size='xl' />
+            <div className="loading">
+              <Spinner size='lg' color="#075098" />
               <p>Loading</p>
-            </>
+            </div>
           }
         </div>
         <div className="pagination">

@@ -45,7 +45,7 @@ function Home() {
           console.log(error);
         });
       axios
-        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31")
+        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&sort_by=created_at&sort_type=desc")
         .then(function (news) {
           let temp =[]
           for (let i = 0; i < 4; i += 1) {
@@ -61,7 +61,7 @@ function Home() {
           console.log(error);
         });
       axios
-        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=31")
+        .get("http://adminmesuji.embuncode.com/api/article?instansi_id=31&sort_type=desc&sort_by=created_at")
         .then(function (article) {
           let temp =[]
           for (let i = 0; i < 4; i += 1) {

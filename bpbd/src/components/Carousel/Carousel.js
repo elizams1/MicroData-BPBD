@@ -11,7 +11,7 @@ function TheCarousel() {
   const [CarouselData, setCarouselData] = useState([]);
   useEffect(() => {
       axios
-        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31")
+        .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&sort_by=created_at&sort_type=desc")
         .then(function (thecarousel) {
           let temp =[]
           for (let i = 0; i < 3; i += 1) {

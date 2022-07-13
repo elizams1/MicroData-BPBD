@@ -63,7 +63,7 @@ function ListNews(){
     setNewsList(null);
     
     axios
-      .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&per_page=4"  + slug + urlTitle + urlPage)
+      .get("http://adminmesuji.embuncode.com/api/news?instansi_id=31&sort_by=created_at&sort_type=desc&per_page=4"  + slug + urlTitle + urlPage)
       .then(function (news) {
         setNewsList(news.data.data.data);
         console.log("console header: " + news.data.data.data);
