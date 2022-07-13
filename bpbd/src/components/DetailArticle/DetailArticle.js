@@ -5,11 +5,58 @@ import { Spinner } from '@chakra-ui/react';
 import './DetailArticle.css';
 
 function DetailArticle(){
-  const {id} = useParams()
-   //Mendapatkan detail article dari id artikel
+  const {id} = useParams();
+  //Mendapatkan detail article dari id artikel
   const [ArticleDetail, setArticleDetail] = useState([]);
+  
+  //Fungsi untuk mendapatkan IP dan nama device
+  const getData = async () => {
+    const res = await axios.get('https://geolocation-db.com/json/')
+    
+    var userAgent = window.navigator.userAgent,
+        platform = window.navigator.platform,
+        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+        windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+        iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+        os = null;
+
+    if (macosPlatforms.indexOf(platform) !== -1) {
+      os = 'Mac OS';
+    } else if (iosPlatforms.indexOf(platform) !== -1) {
+      os = 'iOS';
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+      os = 'Windows';
+    } else if (/Android/.test(userAgent)) {
+      os = 'Android';
+    } else if (!os && /Linux/.test(platform)) {
+      os = 'Linux';
+    }
+
+    console.log(res.data.IPv4);
+    let ip = res.data.IPv4;
+    console.log(os);
+    let device = os;
+    console.log(id);
+    let article_id = id;
+
+    postData(ip, device, article_id);
+
+  }
+   
+  function postData(ip, device, article_id) {
+    axios
+      .post("http://adminmesuji.embuncode.com/api/article/hit?artikel_id=" + article_id + "&ip=" + ip + "&device=" + device)
+      .then(function (response) {
+          console.log(response);
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
+  }
+
   useEffect(() => {
-      axios
+    getData();
+    axios
         .get("http://adminmesuji.embuncode.com/api/article/" + id)
         .then(function (article) {
           setArticleDetail(article.data.data);
@@ -20,6 +67,7 @@ function DetailArticle(){
         });
     }, []);
 
+    
   return(
     <>
       <div className="detailArtikel">
