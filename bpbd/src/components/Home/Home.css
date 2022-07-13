@@ -32,7 +32,7 @@
     width: 100% !important;
   }
   .the-picture2{
-    width: 20% !important; ;
+    width: 30% !important; ;
   }
   .categoryArticle, .categoryNews{
     width: 50% !important;
@@ -42,6 +42,7 @@
   }
   .the-detail-news-home, .the-detail-article{
     width: 100% !important;
+    height: 150px !important;
   }
 }
 .home {
