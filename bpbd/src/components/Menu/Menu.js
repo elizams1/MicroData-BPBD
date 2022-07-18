@@ -135,10 +135,13 @@ function TheMenu(){
         </div>
         <div className="the-menu-2">
           <div className="drawer">
-            <div className="theName">
-              <img className="logoMenu" src={LogoData.logo_instansi} alt="thelogo" ></img>
-              <p className="nameInstansi">{LogoData.nama_instansi}</p>
-            </div>
+            <Link to="/home">
+              <div className="theName">
+                <img className="logoMenu" src={LogoData.logo_instansi} alt="thelogo" ></img>
+                <p className="nameInstansi">{LogoData.nama_instansi}</p>
+              </div>
+            </Link>
+            
             <div className="theDrawer">
               <div className="buttonDrawer" onClick={onOpen}>
                 <BsList size={35} color="#fff" className="icon"/>
@@ -230,7 +233,7 @@ function TheMenu(){
                                       _hover={{ bg: 'aliceblue', color:'#075098' }}
                                     >{child.name}</MenuItem>
                                   </Link>
-                                }cd
+                                }
                               </>
                               )}
                             </MenuList>

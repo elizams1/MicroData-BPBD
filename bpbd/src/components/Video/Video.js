@@ -43,7 +43,7 @@ function Video(){
             { VideoData.map(item =>
             <div className="the-sub-gallery-video">
               <div className="the-video-loc">
-                <iframe src={'https://www.youtube.com/embed/'+item.video_url} alt="thevideo" className="the-img" allowFullScreen/>
+                <iframe src={'https://www.youtube.com/embed/'+item.video_url} title="thevideo" className="the-img" allowFullScreen/>
                 <p className="the-desc">{item.description}</p>
               </div>
             </div>

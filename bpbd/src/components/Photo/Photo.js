@@ -9,9 +9,15 @@ function Photo(){
   useEffect(() => {
     setloading(true);
     axios
-      .get("http://adminmesuji.embuncode.com/api/image-gallery?instansi_id=8")
+      .get("http://adminmesuji.embuncode.com/api/image-gallery?instansi_id=31")
       .then(function (photo) {
-        setPhotoData(photo.data.data.data);
+        let theImage = [];
+        for (let i = 0; i < photo.data.data.data.length; i++) {
+          for (let j = 0; j < photo.data.data.data[i].image_gallery_item.length; j++) {
+            theImage.push(photo.data.data.data[i].image_gallery_item[j])
+          }
+        }
+        setPhotoData(theImage);
         console.log("console header: " + photo.data.data.data);
         setloading(false);
       })
@@ -33,18 +39,15 @@ function Photo(){
             </>
             :
             <>
+              {/* <div className="the-sub-gallery"> */}
               {PhotoData.map(item =>
-              <div className="the-sub-gallery">
-                {
-                  item.image_gallery_item.map(items =>
-                    <div className="the-photo">
-                      <img src={items.image_file_data} alt="galeri" className="the-img"/>
-                      <p className="the-desc">{items.description}</p>
-                    </div>
-                  )
-                }
-              </div>
-              )}
+                <div className="the-photo">
+                  <img src={item.image_file_data} alt="galeri" className="the-img"/>
+                  <p className="the-desc">{item.description}</p>
+                </div>
+                )}
+              {/* </div> */}
+              
             </>
           } 
           </div>

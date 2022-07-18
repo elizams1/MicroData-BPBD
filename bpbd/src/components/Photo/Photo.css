@@ -14,9 +14,8 @@
   text-align: center;
   margin-bottom: 10px;
 }
-.the-sub-gallery{
+.the-gallery{
   display: flex;
-  flex-direction: row;
   width: 100%;
   justify-content: space-between;
   flex-wrap: wrap;

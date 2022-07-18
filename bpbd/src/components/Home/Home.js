@@ -29,7 +29,7 @@ function Home() {
           console.log(error);        
         });
       axios
-        .get("http://adminmesuji.embuncode.com/api/image-gallery?instansi_id=15&per_page=3")
+        .get("http://adminmesuji.embuncode.com/api/image-gallery?instansi_id=31&per_page=3")
         .then(function (photo) {
           let theImage = [];
           for (let i = 0; i < photo.data.data.data.length; i++) {
@@ -37,7 +37,11 @@ function Home() {
               theImage.push(photo.data.data.data[i].image_gallery_item[j])
             }
           }
-          setPhotoData(theImage);
+          let theImageView = [];
+          for (let i = 0; i < 3; i++) {
+            theImageView.push(theImage[i])
+          }
+          setPhotoData(theImageView);
           console.log("console header: " + photo.data.data.data);
           setloading(false);
         })
@@ -207,7 +211,7 @@ function Home() {
                   <iframe
                     className="the-vidio2"
                     src={'https://www.youtube.com/embed/'+item.video_url} 
-                    alt="First slide"
+                    title="thevideo"
                     allowFullScreen
                   />
                   <p className="text-description-video">
