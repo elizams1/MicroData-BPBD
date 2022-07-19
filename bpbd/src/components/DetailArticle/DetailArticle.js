@@ -5,7 +5,7 @@ import { Spinner } from '@chakra-ui/react';
 import './DetailArticle.css';
 
 function DetailArticle(){
-  const {id} = useParams();
+  const { id } = useParams();
   const [loading, setloading] = useState(false);
   //Mendapatkan detail article dari id artikel
   const [ArticleDetail, setArticleDetail] = useState([]);

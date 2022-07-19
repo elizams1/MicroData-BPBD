@@ -15,7 +15,7 @@ import VisiMisi from './components/VisiMisi/VisiMisi.js';
 import DetailDocument from './components/DetailDocument/DetailDocument.js';
 import { ChakraProvider } from '@chakra-ui/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route, BrowserRouter} from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 
 function App() {
   return (
